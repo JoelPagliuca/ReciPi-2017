@@ -8,11 +8,3 @@ angular.module('controllers', [])
         $scope.recipes = data;
         $scope.recipesCount = data.length;
     });
-
-/**
-function recipeListController($scope, recipeListService) {
-    var data = recipeListService.data;
-    $scope.recipes = data;
-    $scope.recipesCount = data.length;
-}
-*/
