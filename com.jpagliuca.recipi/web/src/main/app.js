@@ -1,5 +1,6 @@
 'use strict';
 
-var app = angular.module('recipi', []);
-
-app.controller();
+var app = angular.module('recipi', [
+    'services',
+    'controllers',
+]);

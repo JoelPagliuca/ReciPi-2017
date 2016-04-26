@@ -2,11 +2,27 @@
 <head>
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
 </head>
-<body>
+<body ng-controller="recipeListController">
 <script type="text/javascript" src="assets/js/angular.min.js"></script>
 
-<h1>ReciPi</h1>
+<h2>Recipes</h2>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="recipe in recipes">
+        <td>{{recipe.id}}</td>
+        <td>{{recipe.name}}</td>
+    </tr>
+    </tbody>
+</table>
 
 <script type="text/javascript" src="app.js"></script>
+<script type="text/javascript" src="services.js"></script>
+<script type="text/javascript" src="controllers.js"></script>
 </body>
 </html>
