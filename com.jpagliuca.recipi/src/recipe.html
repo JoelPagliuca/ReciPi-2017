@@ -6,8 +6,15 @@
             {{ tag.name }}
         </span>
     </div>
+    <h2>Ingredients</h2>
+    <div class="" id="ingredients">
+        <ul>
+            <li ng-repeat="ingredient in ingredients">
+                {{ amount[ingredient] }} {{ unit[ingredient] }} - {{ ingredient }}
+            </li>
+        </ul>
+    </div>
     <h2>Steps</h2>
-    <p>Total steps: {{ stepsCount }}</p>
     <table class="table table-striped">
         <thead>
         <tr>

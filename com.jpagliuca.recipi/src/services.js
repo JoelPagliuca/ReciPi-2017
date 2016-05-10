@@ -69,6 +69,11 @@ var step_data = [
         { number: 1, ingredient: 'chicken', description: 'cook a chicked', unit:'unit', amount:1 },
         { number: 2, ingredient: 'herb', description: 'add herbs', unit:'g', amount:100 },
         { number: 3, ingredient: 'bread', description: 'serve with bread', unit:'loaf', amount:1 }
+    ],
+    [
+        { number: 1, ingredient: 'bread', description: 'get a bread', unit:'loaf', amount:1 },
+        { number: 2, ingredient: 'garlic', description: 'add garlic', unit:'clove', amount:5 },
+        { number: 3, ingredient: 'bread', description: 'get another bread', unit:'loaf', amount:1 }
     ]
 ];
 
@@ -77,5 +82,6 @@ var ingredient_data = [
     { id: 1, name: 'water' },
     { id: 2, name: 'chicken' },
     { id: 3, name: 'herb' },
-    { id: 4, name: 'bread' }
+    { id: 4, name: 'bread' },
+    { id: 5, name: 'garlic' }
 ];
