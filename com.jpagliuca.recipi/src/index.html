@@ -1,29 +1,38 @@
 <html ng-app="recipi">
 <head>
+    <!--CSS-->
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+
+    <!--Angular-->
+    <script type="text/javascript" src="assets/js/angular.min.js"></script>
+
+    <!--Angular scripts-->
+    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="services.js"></script>
+    <script type="text/javascript" src="controllers.js"></script>
 </head>
-<body ng-controller="recipeListController">
-<script type="text/javascript" src="assets/js/angular.min.js"></script>
+<!--Navbar header-->
+<header>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Recipi</a>
+            </div>
 
-<h2>Recipes</h2>
-<p>Total recipes: {{ recipesCount }}</p>
-<table class="table table-striped">
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr ng-repeat="recipe in recipes">
-        <td>{{recipe.id}}</td>
-        <td>{{recipe.name}}</td>
-    </tr>
-    </tbody>
-</table>
+            <ul class="nav navbar-nav ">
+                <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+                <li><a href="#about"><i class="fa fa-home"></i> About</a></li>
+                <li><a href="#contact"><i class="fa fa-home"></i> Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
 
-<script type="text/javascript" src="app.js"></script>
-<script type="text/javascript" src="services.js"></script>
-<script type="text/javascript" src="controllers.js"></script>
+<!--Main content-->
+<div id="main">
+    <!--Angular stuff-->
+</div>
+
 </body>
 </html>
