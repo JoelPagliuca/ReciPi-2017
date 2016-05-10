@@ -1,5 +1,11 @@
 <div>
     <h2>{{ recipe.name }}</h2>
+    <div class="" id="tags">
+        Tags:
+        <span ng-repeat="tag in recipe.tags" class="label label-primary">
+            {{ tag.name }}
+        </span>
+    </div>
     <h2>Steps</h2>
     <p>Total steps: {{ stepsCount }}</p>
     <table class="table table-striped">

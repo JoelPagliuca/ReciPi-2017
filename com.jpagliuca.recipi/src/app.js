@@ -8,7 +8,7 @@ var app = angular.module('recipi', [
     .config(function($routeProvider) {
         $routeProvider
             // home page
-            .when('/', {
+            .when('/home', {
                 templateUrl: 'home.html'
             })
 
