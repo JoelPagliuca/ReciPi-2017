@@ -18,6 +18,7 @@ module.exports = function(config) {
     files: [
       '../assets/js/angular.min.js',
       '../assets/js/angular-mocks.js',
+      '../assets/js/angular-route.min.js',
       '../*.js',
       '*.spec.js'
     ],
