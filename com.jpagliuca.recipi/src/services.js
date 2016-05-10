@@ -2,17 +2,11 @@
 
 angular.module('services', [])
 
-    .factory('recipeListService', function() {
-        // do some db request
-        return {
-            data: recipe_data
-        };
-    })
-    
-    .factory('stepListService', function() {
-        // talk with an api that gets steps
+    .factory('recipeService', function() {
 
         var service = {
+            getRecipes: getRecipes,
+            getRecipe: getRecipe,
             getSteps: getSteps,
         };
 
@@ -21,6 +15,14 @@ angular.module('services', [])
         function getSteps (id) {
             return step_data[id];
         };
+
+        function getRecipes () {
+            return recipe_data;
+        }
+
+        function getRecipe (id) {
+            return recipe_data[id];
+        }
     });
 
 var recipe_data = [
