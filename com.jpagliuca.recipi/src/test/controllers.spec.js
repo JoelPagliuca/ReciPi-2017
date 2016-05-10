@@ -16,7 +16,6 @@ describe('controllers', function() {
                 $scope: $scope,
                 recipeListService: { data: [{},{},{}] }
             });
-            console.log($scope.rl);
         }));
 
         it('should have an accurate item count', function() {
