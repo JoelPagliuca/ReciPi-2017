@@ -12,8 +12,15 @@ var app = angular.module('recipi', [
                 templateUrl: 'home.html'
             })
 
+            // recipe view
             .when('/recipe', {
                 templateUrl: 'recipe.html',
                 controller: 'stepListController'
+            })
+
+            // recipe list view
+            .when('/recipes', {
+                templateUrl: 'recipe_list.html',
+                controller: 'recipeListController'
             })
     });

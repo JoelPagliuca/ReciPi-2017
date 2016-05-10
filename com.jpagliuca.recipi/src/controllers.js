@@ -9,8 +9,9 @@ angular.module('controllers', [])
         $scope.recipesCount = data.length;
     })
 
-    .controller('stepListController', function($scope, stepListService) {
-        var data = stepListService.getSteps(1);
+    .controller('stepListController', function($scope, stepListService, $routeParams) {
+        $scope.recipe_id = $routeParams.id;
+        var data = stepListService.getSteps($scope.recipe_id);
         $scope.steps = data;
         $scope.stepsCount = data.length;
     });

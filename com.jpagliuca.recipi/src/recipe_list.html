@@ -1,0 +1,18 @@
+<div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="recipe in recipes">
+            <td>{{recipe.id}}</td>
+            <td>{{recipe.name}}</td>
+            <td><a href="#recipe?id={{recipe.id}}">View</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
