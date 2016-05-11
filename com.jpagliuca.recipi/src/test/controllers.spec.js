@@ -14,7 +14,7 @@ describe('controllers', function() {
             $scope = $rootScope.$new();
             $controller('recipeListController as rl', {
                 $scope: $scope,
-                service: { data: [{},{},{}] }
+                recipeService: { getRecipes: function(){ return [{},{},{}] } }
             });
         }));
 
