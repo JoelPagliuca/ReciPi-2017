@@ -16,7 +16,7 @@ angular.module('controllers', [])
      * gets the recipe and steps
      * calculates the ingredients list of the recipe
      */
-    .controller('stepListController', function($scope, $routeParams, recipeService) {
+    .controller('recipeController', function($scope, $routeParams, recipeService) {
         // get the recipe id from the GET param
         $scope.recipe_id = $routeParams.id;
 

@@ -15,7 +15,7 @@ var app = angular.module('recipi', [
             // recipe view
             .when('/recipe', {
                 templateUrl: 'recipe.html',
-                controller: 'stepListController'
+                controller: 'recipeController'
             })
 
             // recipe list view
