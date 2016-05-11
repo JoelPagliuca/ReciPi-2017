@@ -1,16 +1,24 @@
 <div>
-    <table class="table table-striped">
+    <h1>
+        Recipes
+    </h1>
+    <table class="table table-striped" style="width: 75%">
         <thead>
         <tr>
-            <th>ID</th>
             <th>Name</th>
+            <th>Tags</th>
+            <th></th>
             <th></th>
         </tr>
         </thead>
         <tbody>
         <tr ng-repeat="recipe in recipes">
-            <td>{{recipe.id}}</td>
             <td>{{recipe.name}}</td>
+            <td>
+                <span ng-repeat="tag in recipe.tags" class="label label-primary">
+                    {{ tag.name }}
+                </span>
+            </td>
             <td><a href="#recipe?id={{recipe.id}}">View</a></td>
             <td>Edit</td>
         </tr>
