@@ -14,12 +14,12 @@ describe('controllers', function() {
             $scope = $rootScope.$new();
             $controller('recipeListController as rl', {
                 $scope: $scope,
-                recipeService: { getRecipes: function(){ return [{},{},{}] } }
+                recipeService: { getRecipes: function(){ return [{},{},{},{}] } }
             });
         }));
 
         it('should have an accurate item count', function() {
-            expect($scope.recipesCount).toBe(3);
+            expect($scope.recipesCount).toBe(4);
         });
     });
 

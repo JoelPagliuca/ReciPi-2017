@@ -1,9 +1,9 @@
 'use strict';
 
 var app = angular.module('recipi', [
+    'ngRoute',
     'services',
-    'controllers',
-    'ngRoute'
+    'controllers'
 ])
     .config(function($routeProvider) {
         $routeProvider

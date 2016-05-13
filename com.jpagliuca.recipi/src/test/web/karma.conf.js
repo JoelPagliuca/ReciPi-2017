@@ -5,7 +5,7 @@ module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '',
+    basePath: '../../', // src folder
 
 
     // frameworks to use
@@ -16,11 +16,11 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      '../assets/js/angular.min.js',
-      '../assets/js/angular-mocks.js',
-      '../assets/js/angular-route.min.js',
-      '../*.js',
-      '*.spec.js'
+      'main/web/assets/js/angular.min.js',
+      'main/web/assets/js/angular-mocks.js',
+      'main/web/assets/js/angular-route.min.js',
+      'main/web/*.js',
+      'test/web/*.spec.js'
     ],
 
 
