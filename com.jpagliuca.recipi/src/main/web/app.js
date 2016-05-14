@@ -21,9 +21,16 @@ var app = angular.module('recipi', [
                 controller: 'recipeController'
             })
 
+            // recipe edit view
+            .when('/recipe/edit', {
+                templateUrl: 'recipe/edit-recipe.html',
+                controller: 'editRecipeController'
+            })
+
             // recipe list view
             .when('/recipes', {
                 templateUrl: 'recipeList/recipe-list.html',
                 controller: 'recipeListController'
             })
+
     });
