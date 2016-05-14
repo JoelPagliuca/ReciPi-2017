@@ -16,14 +16,24 @@ function editRecipeController ($scope, $routeParams, recipeService) {
     $scope.allTags = recipeService.getTags();
     $scope.allIngredients = recipeService.getIngredients();
 
-    $scope.steps = [];
-    $scope.tags = [];
-    $scope.recipe = { tags: $scope.tags };
-    $scope.recipe.name = "";
+    // get the existing recipe if we've asked for one (also steps)
+    $scope.recipe_id = $routeParams.id;
+    if ($scope.recipe_id) {
+        $scope.recipe = recipeService.getRecipe($scope.recipe_id);
+        $scope.tags = $scope.recipe.tags;
+        $scope.steps = recipeService.getSteps($scope.recipe_id);
+        $scope.step_number = $scope.steps[$scope.steps.length-1].number + 1;
+    } else {
+        $scope.tags = [];
+        $scope.recipe =  { tags: $scope.tags };
+        $scope.steps = [];
+        $scope.recipe.name = "";
+        $scope.step_number = 1;
+    }
 
+    // editable variables
     $scope.step = {};
     $scope.tag = {};
-    $scope.step_number = 1;
 
     /**
      * TODO input validation
@@ -41,5 +51,9 @@ function editRecipeController ($scope, $routeParams, recipeService) {
         $scope.steps.push($scope.step);
         $scope.step = {};
         $scope.step_number += 1;
+    };
+
+    this.saveRecipe = function() {
+        // save to the DB
     };
 }

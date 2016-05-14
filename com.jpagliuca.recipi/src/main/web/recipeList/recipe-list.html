@@ -15,10 +15,12 @@
         <tr ng-repeat="recipe in recipes">
             <td>{{recipe.name}}</td>
             <td>
-                <tag-list></tag-list>
+                <span ng-repeat="tag in recipe.tags" class="label label-primary">
+                    {{ tag.name }}
+                </span>
             </td>
             <td><a href="#recipe?id={{recipe.id}}">View</a></td>
-            <td>Edit</td>
+            <td><a href="#recipe/edit?id={{recipe.id}}">Edit</a></td>
         </tr>
         </tbody>
     </table>
