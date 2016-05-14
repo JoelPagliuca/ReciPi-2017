@@ -11,7 +11,10 @@ angular.module('services', [])
             getSteps: getSteps,
 
             getIngredients: getIngredients,
-            getIngredient: getIngredient
+            getIngredient: getIngredient,
+
+            getTags: getTags,
+            getTag: getTag
         };
 
         function getSteps (id) {
@@ -32,6 +35,14 @@ angular.module('services', [])
 
         function getIngredient (id) {
             return ingredient_data[id];
+        }
+
+        function getTags () {
+            return tag_data;
+        }
+
+        function getTag (id) {
+            return tag_data[id];
         }
     });
 

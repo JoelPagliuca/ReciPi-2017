@@ -24,7 +24,8 @@ var app = angular.module('recipi', [
             // recipe edit view
             .when('/recipe/edit', {
                 templateUrl: 'recipe/edit-recipe.html',
-                controller: 'editRecipeController'
+                controller: 'editRecipeController',
+                controllerAs: 'editCtrl'
             })
 
             // recipe list view

@@ -1,8 +1,23 @@
 <div>
+    <!--live preview-->
     <h2>{{ recipe.name }}</h2>
+    <div class="" id="tags" ng-show="recipe.tags.length">
+        Tags:
+        <span ng-repeat="tag in recipe.tags" class="label label-primary">
+            {{ tag.name }}
+        </span>
+    </div>
+
+    <hr>
+
+    <!--recipe editing form-->
     <form name="recipeForm">
         <fieldset class="form-group">
             <input ng-model="recipe.name" type="text" class="form-control" placeholder="recipe name" />
+            <select ng-model="tag" class="form-control" ng-options="tag.name for tag in allTags">
+                <option value="">Select a Tag</option>
+            </select>
+            <input type="submit" class="btn btn-primary pull-right" value="Add tag" ng-click="editCtrl.addTag()" />
         </fieldset>
     </form>
     <h2>Steps</h2>
