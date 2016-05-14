@@ -5,14 +5,20 @@
     <table class="table table-striped" style="width: 75%">
         <thead>
         <tr>
-            <th>Name</th>
+            <th>
+                <a href="" ng-click="sortType = 'name'; sortReverse = !sortReverse">
+                    Name
+                    <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+            </th>
             <th>Tags</th>
             <th></th>
             <th></th>
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="recipe in recipes">
+        <tr ng-repeat="recipe in recipes | orderBy:sortType:sortReverse">
             <td>{{recipe.name}}</td>
             <td>
                 <span ng-repeat="tag in recipe.tags" class="label label-primary">

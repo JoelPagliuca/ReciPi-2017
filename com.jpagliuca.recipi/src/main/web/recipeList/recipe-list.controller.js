@@ -15,4 +15,8 @@ function recipeListController ($scope, recipeService) {
     var data = recipeService.getRecipes();
     $scope.recipes = data;
     $scope.recipesCount = data.length;
+
+    // sorting
+    $scope.sortType = 'name';
+    $scope.sortReverse= false;
 }
