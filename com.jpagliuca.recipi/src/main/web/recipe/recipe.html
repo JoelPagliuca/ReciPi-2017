@@ -15,22 +15,5 @@
         </ul>
     </div>
     <h2>Steps</h2>
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>Step</th>
-            <th>Ingredient</th>
-            <th>Description</th>
-            <th>Quantity</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="step in steps">
-            <td>{{step.number}}</td>
-            <td>{{step.ingredient}}</td>
-            <td>{{step.description}}</td>
-            <td>{{step.amount}} {{step.unit}}</td>
-        </tr>
-        </tbody>
-    </table>
+    <step-list></step-list>
 </div>
