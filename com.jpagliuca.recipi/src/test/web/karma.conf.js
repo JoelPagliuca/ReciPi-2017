@@ -20,6 +20,7 @@ module.exports = function(config) {
       'main/web/assets/js/*.js',
       'main/web/*.js',
       'main/web/recipeList/*.js',
+      'main/web/recipe/*.js',
       'test/web/*.spec.js'
     ],
 

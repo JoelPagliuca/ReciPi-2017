@@ -7,7 +7,7 @@ angular.module('controllers')
 recipeListController.$inject = ['$scope', 'recipeService'];
 
 /**
- *
+ * just gets the list of recipes and counts them
  * @param $scope
  * @param recipeService
  */
