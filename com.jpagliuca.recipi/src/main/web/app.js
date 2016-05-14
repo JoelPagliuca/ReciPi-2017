@@ -11,7 +11,8 @@ var app = angular.module('recipi', [
         $routeProvider
             // home page
             .when('/home', {
-                templateUrl: 'home.html'
+                templateUrl: 'home/home.html',
+                controller: homeController
             })
 
             // recipe view
