@@ -23,7 +23,7 @@ var app = angular.module('recipi', [
 
             // recipe list view
             .when('/recipes', {
-                templateUrl: 'recipeList/recipe_list.html',
+                templateUrl: 'recipeList/recipe-list.html',
                 controller: 'recipeListController'
             })
     });
