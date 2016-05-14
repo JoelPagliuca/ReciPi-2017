@@ -15,9 +15,7 @@
         <tr ng-repeat="recipe in recipes">
             <td>{{recipe.name}}</td>
             <td>
-                <span ng-repeat="tag in recipe.tags" class="label label-primary">
-                    {{ tag.name }}
-                </span>
+                <tag-list></tag-list>
             </td>
             <td><a href="#recipe?id={{recipe.id}}">View</a></td>
             <td>Edit</td>
