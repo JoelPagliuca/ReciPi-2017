@@ -6,6 +6,7 @@ angular.module('recipi')
 
 function ingredientList() {
     return {
+        restrict: 'E',
         templateUrl: "recipe/ingredient-list.html"
     };
 }

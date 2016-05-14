@@ -6,6 +6,7 @@ angular.module('recipi')
 
 function navbar() {
     return {
+        restrict: 'E',
         templateUrl: "common/navbar/navbar.html"
     };
 }

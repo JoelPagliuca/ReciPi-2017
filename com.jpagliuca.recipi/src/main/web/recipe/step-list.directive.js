@@ -6,6 +6,7 @@ angular.module('recipi')
 
 function stepList() {
     return {
+        restrict: 'E',
         templateUrl: "recipe/step-list.html"
     };
 }
