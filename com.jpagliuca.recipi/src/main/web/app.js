@@ -1,7 +1,9 @@
 'use strict';
 
 var app = angular.module('recipi', [
+// dependencies
     'ngRoute',
+
     'services',
     'controllers'
 ])
@@ -14,13 +16,13 @@ var app = angular.module('recipi', [
 
             // recipe view
             .when('/recipe', {
-                templateUrl: 'recipe.html',
+                templateUrl: 'recipe/recipe.html',
                 controller: 'recipeController'
             })
 
             // recipe list view
             .when('/recipes', {
-                templateUrl: 'recipe_list.html',
+                templateUrl: 'recipeList/recipe_list.html',
                 controller: 'recipeListController'
             })
     });

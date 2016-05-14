@@ -3,7 +3,7 @@
 describe('controllers', function() {
 
     beforeEach(function() {
-        module('recipi');
+        module('controllers');
     });
 
     describe('recipeListController', function() {

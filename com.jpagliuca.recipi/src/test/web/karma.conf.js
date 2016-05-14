@@ -19,6 +19,7 @@ module.exports = function(config) {
       'main/web/assets/js/angular.min.js',
       'main/web/assets/js/*.js',
       'main/web/*.js',
+      'main/web/recipeList/*.js',
       'test/web/*.spec.js'
     ],
 

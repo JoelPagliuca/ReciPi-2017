@@ -4,15 +4,6 @@
 angular.module('controllers', [])
 
     /**
-     * gets a list of recipes
-     */
-    .controller('recipeListController', function($scope, recipeService) {
-        var data = recipeService.getRecipes();
-        $scope.recipes = data;
-        $scope.recipesCount = data.length;
-    })
-
-    /**
      * gets the recipe and steps
      * calculates the ingredients list of the recipe
      */
