@@ -6,7 +6,6 @@ angular.module('recipi')
 
 function stepList() {
     return {
-        templateURL: "step-list.html",
-        scope: false
+        templateUrl: "recipe/step-list.html"
     };
 }
