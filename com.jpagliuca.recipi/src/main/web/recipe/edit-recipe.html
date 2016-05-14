@@ -1,12 +1,7 @@
 <div>
     <!--live preview-->
     <h2>{{ recipe.name }}</h2>
-    <div class="" id="tags" ng-show="recipe.tags.length">
-        Tags:
-        <span ng-repeat="tag in recipe.tags" class="label label-primary">
-            {{ tag.name }}
-        </span>
-    </div>
+    <tag-list></tag-list>
 
     <hr>
 

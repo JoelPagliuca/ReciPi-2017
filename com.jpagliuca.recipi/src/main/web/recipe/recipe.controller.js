@@ -19,6 +19,7 @@ function recipeController ($scope, $routeParams, recipeService) {
 
     // get the data
     $scope.recipe = recipeService.getRecipe($scope.recipe_id);
+    $scope.tags = $scope.recipe.tags;
     $scope.steps = recipeService.getSteps($scope.recipe_id);
 
     var ingredientList = getIngredientList($scope.steps);

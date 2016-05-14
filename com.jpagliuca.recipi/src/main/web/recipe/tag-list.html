@@ -1,0 +1,11 @@
+<div class="container" id="tags">
+    Tags:
+    <div ng-show="tags.length">
+        <span ng-repeat="tag in tags" class="label label-primary">
+            {{ tag.name }}
+        </span>
+    </div>
+    <div ng-hide="tags.length">
+        <span class="label label-default">none</span>
+    </div>
+</div>

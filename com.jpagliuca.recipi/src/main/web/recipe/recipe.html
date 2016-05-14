@@ -1,12 +1,6 @@
 <div>
     <h1>{{ recipe.name }}</h1>
-    <!--TODO extract this shit-->
-    <div class="" id="tags">
-        Tags:
-        <span ng-repeat="tag in recipe.tags" class="label label-primary">
-            {{ tag.name }}
-        </span>
-    </div>
+    <tag-list></tag-list>
     <h2>Ingredients</h2>
     <ingredient-list></ingredient-list>
     <h2>Steps</h2>
