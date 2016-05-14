@@ -2,6 +2,14 @@
     <h1>
         Recipes
     </h1>
+    <form>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                <input type="text" class="form-control" placeholder="Search by name" ng-model="searchName">
+            </div>
+        </div>
+    </form>
     <table class="table table-striped" style="width: 75%">
         <thead>
         <tr>
@@ -18,7 +26,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="recipe in recipes | orderBy:sortType:sortReverse">
+        <tr ng-repeat="recipe in recipes | orderBy:sortType:sortReverse | filter:searchName">
             <td>{{recipe.name}}</td>
             <td>
                 <span ng-repeat="tag in recipe.tags" class="label label-primary">

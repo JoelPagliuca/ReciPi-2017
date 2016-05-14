@@ -19,4 +19,7 @@ function recipeListController ($scope, recipeService) {
     // sorting
     $scope.sortType = '';
     $scope.sortReverse= true;
+
+    // searching
+    $scope.searchName = '';
 }
