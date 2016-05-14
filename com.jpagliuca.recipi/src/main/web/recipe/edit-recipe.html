@@ -10,16 +10,32 @@
 
     <hr>
 
-    <!--recipe editing form-->
+    <!--recipe form-->
     <form name="recipeForm">
         <fieldset class="form-group">
             <input ng-model="recipe.name" type="text" class="form-control" placeholder="recipe name" />
             <select ng-model="tag" class="form-control" ng-options="tag.name for tag in allTags">
                 <option value="">Select a Tag</option>
             </select>
-            <input type="submit" class="btn btn-primary pull-right" value="Add tag" ng-click="editCtrl.addTag()" />
+            <input type="submit" class="btn btn-primary pull-right" value="Add tag" ng-click="editCtrl.addTag()" title="Tag"/>
         </fieldset>
     </form>
     <h2>Steps</h2>
-    <p>Todo</p>
+    <step-list></step-list>
+    <!--TODO live preview-->
+
+    <hr>
+
+    <!--step form-->
+    <form name="stepForm">
+        <fieldset class="form-group">
+            <textarea ng-model="step.description" class="form-control" placeholder="step description" title="Description"></textarea>
+            <select ng-model="step.ingredient" class="form-control" ng-options="ingredient.name for ingredient in allIngredients">
+                <option value="">Select an Ingredient</option>
+            </select>
+            <input ng-model="step.unit" type="text" class="form-control" placeholder="unit" />
+            <input ng-model="step.amount" type="number" class="form-control" placeholder="amount" />
+            <input type="submit" class="btn btn-primary pull-right" value="Add step" ng-click="editCtrl.addStep()" title="Step"/>
+        </fieldset>
+    </form>
 </div>
