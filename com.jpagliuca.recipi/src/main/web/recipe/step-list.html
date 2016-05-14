@@ -1,4 +1,4 @@
-<table class="table table-striped">
+<table class="table table-striped" ng-show="steps.length">
     <thead>
     <tr>
         <th>Step</th>
@@ -10,7 +10,7 @@
     <tbody>
     <tr ng-repeat="step in steps">
         <td>{{step.number}}</td>
-        <td>{{step.ingredient}}</td>
+        <td>{{step.ingredient.name}}</td>
         <td>{{step.description}}</td>
         <td>{{step.amount}} {{step.unit}}</td>
     </tr>
