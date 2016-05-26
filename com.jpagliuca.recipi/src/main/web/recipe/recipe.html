@@ -1,8 +1,63 @@
 <div>
-    <h1>{{ recipe.name }}</h1>
-    <tag-list></tag-list>
-    <h2>Ingredients</h2>
-    <ingredient-list></ingredient-list>
-    <h2>Steps</h2>
-    <step-list></step-list>
+    <div class="page-header">
+        <h1>{{ recipe.name }}</h1>
+    </div>
+    <div class="col-md-6 row">
+        <div class="panel panel-default">
+            <div class="panel-body">{{ recipe.description }}</div>
+        </div>
+        <tag-list></tag-list>
+        <hr>
+        <div class="row" class="text-center">
+            <div class="col-md-2">
+                <div class="bg-success text-success text-center">
+                    <span><b>Serves</b></span><br>
+                    <span>{{recipe.serves}}</span>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="bg-info text-info text-center">
+                    <span><b>To Prep</b></span><br>
+                    <span>{{recipe.time.prep}} min</span>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="bg-info text-info text-center">
+                    <span><b>To Cook</b></span><br>
+                    <span>{{recipe.time.cook}} min</span>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="bg-info text-info text-center">
+                    <span><b>Other</b></span><br>
+                    <span>{{recipe.time.other}} min</span>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="bg-success text-success text-center">
+                    <span><b>Total</b></span><br>
+                    <span>{{recipe.time.prep+recipe.time.cook+recipe.time.other}} min</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <img class="img-responsive img-rounded" src="data/image.jpg">
+    </div>
+    <div class="col-md-4">
+        <h2>Ingredients</h2>
+        <ingredient-list></ingredient-list>
+    </div>
+    <div class="col-md-8">
+        <h2>Notes</h2>
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="note in recipe.notes">
+                {{note}}
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-12">
+        <h2>Method</h2>
+        <step-list></step-list>
+    </div>
 </div>
