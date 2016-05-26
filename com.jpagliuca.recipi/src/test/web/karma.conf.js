@@ -20,7 +20,8 @@ module.exports = function(config) {
       'main/web/assets/js/*.js',
       'main/web/*.js',
       'main/web/*/*.controller.js',
-      'test/web/*.spec.js'
+      'test/web/*.spec.js',
+      'test/web/*/*.spec.js'
     ],
 
 
