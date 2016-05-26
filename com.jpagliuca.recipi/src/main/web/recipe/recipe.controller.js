@@ -33,7 +33,7 @@ function recipeController ($scope, $routeParams, recipeService) {
 /**
  * Calculates the ingredients list for a recipe given its steps
  * @param steps: Array
- * @returns {{ingredients: Array, amount: {}, unit: {}}}
+ * @returns {{ingredients: Array<Ingredient>, amount: {}, unit: {}}}
  */
 function getIngredientList (steps) {
     // ingredients calculation
@@ -43,7 +43,7 @@ function getIngredientList (steps) {
         unit = {};   // {ingredient -> unit}
     // get all the unique ingredients
     for (var i = 0, len = steps.length; i<len; i++) {
-        var ing = steps[i].ingredient;
+        var ing = steps[i].ingredient.name;
         var idx = ingredients.indexOf(ing);
         if (idx === -1) {
             ingredients.push(ing);

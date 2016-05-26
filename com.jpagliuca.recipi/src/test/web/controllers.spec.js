@@ -25,10 +25,15 @@ describe('controllers', function() {
 
     describe('getIngredientList', function() {
 
+        var test_ingre = [
+            { id: 0, name: 'a'},
+            { id: 1, name: 'b'},
+            { id: 2, name: 'c'}
+        ];
         var test_steps = [
-            { ingredient: 'a', unit:'x', amount:1 },
-            { ingredient: 'b', unit:'y', amount:2 },
-            { ingredient: 'c', unit:'x', amount:3 }
+            { ingredient: test_ingre[0], unit:'x', amount:1 },
+            { ingredient: test_ingre[1], unit:'y', amount:2 },
+            { ingredient: test_ingre[2], unit:'x', amount:3 }
         ];
 
         it('should do nothing for empty list', function() {
@@ -60,7 +65,7 @@ describe('controllers', function() {
         });
 
         it('should calculate the amount correctly', function() {
-            test_steps[2].ingredient = 'a';
+            test_steps[2].ingredient = test_ingre[0];
             var data = getIngredientList(test_steps);
             expect(data.amount['a']).toBe(4);
             test_steps[2].ingredient = 'c'; // undo
