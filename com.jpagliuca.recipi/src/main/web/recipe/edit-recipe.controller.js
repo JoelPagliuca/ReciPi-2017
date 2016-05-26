@@ -13,8 +13,19 @@ editRecipeController.$inject = ['$scope', '$routeParams', 'recipeService'];
  * @param recipeService
  */
 function editRecipeController ($scope, $routeParams, recipeService) {
-    $scope.allTags = recipeService.getTags();
-    $scope.allIngredients = recipeService.getIngredients();
+    $scope.allTags = [];
+    $scope.allIngredients = [];
+
+    var saveTags = function(response) {
+        $scope.allTags = response;
+    };
+    var saveIngredients = function(response) {
+        $scope.allIngredients = response;
+    };
+    var error = function(response){};
+
+    recipeService.getTags(saveTags, error);
+    recipeService.getIngredients(saveIngredients, error);
 
     // get the existing recipe if we've asked for one (also steps)
     $scope.recipe_id = $routeParams.id;

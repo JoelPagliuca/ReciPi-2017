@@ -2,7 +2,7 @@
 
 angular.module('services', [])
 
-    .factory('recipeService', function() {
+    .factory('recipeService', ['$http', function($http) {
 
         return {
             getRecipes: getRecipes,
@@ -29,22 +29,34 @@ angular.module('services', [])
             return recipe_data[id];
         }
 
-        function getIngredients () {
-            return ingredient_data;
+        function getIngredients (success, error) {
+            $http.get('/data/ingredients.json')
+                .success(function(data) {
+                    success(data);
+                })
+                .error(function(data) {
+                    error(data);
+                });
         }
 
         function getIngredient (id) {
             return ingredient_data[id];
         }
 
-        function getTags () {
-            return tag_data;
+        function getTags (success, error) {
+            $http.get('/data/tags.json')
+                .success(function(data) {
+                    success(data);
+                })
+                .error(function(data) {
+                    error(data);
+                });
         }
 
         function getTag (id) {
             return tag_data[id];
         }
-    });
+    }]);
 
 var tag_data = [
     { id: 0, name: 'dinner' },
