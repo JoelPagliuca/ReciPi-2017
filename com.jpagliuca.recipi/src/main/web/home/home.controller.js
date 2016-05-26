@@ -13,10 +13,14 @@ homeController.$inject = ['$scope', 'recipeService'];
  * @param recipeService
  */
 function homeController ($scope, recipeService) {
-    var data = recipeService.getRecipes();
-    $scope.recipesCount = data.length;
-    var getRandomRecipe = function() {
-        return Math.floor(Math.random()*$scope.recipesCount);
+    var getRandomRecipe = function(max) {
+        return Math.floor(Math.random()*max);
     };
-    $scope.recipe_id = getRandomRecipe();
+
+    var getRecipesCount = function(response) {
+        $scope.recipesCount = response.length;
+        $scope.recipe_id = getRandomRecipe($scope.recipesCount);
+    }
+
+    recipeService.getRecipes(getRecipesCount, function(){});
 }

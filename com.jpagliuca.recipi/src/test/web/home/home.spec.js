@@ -9,10 +9,11 @@ describe('homeController', function() {
     });
 
     beforeEach(inject(function ($rootScope, $controller) {
+        var recipe_data = [{},{},{},{}];
         $scope = $rootScope.$new();
         $controller('homeController as h', {
             $scope: $scope,
-            recipeService: { getRecipes: function(){ return [{},{},{},{}] } }
+            recipeService: { getRecipes: function(s,e){ s(recipe_data); e({}); } }
         });
     }));
 
