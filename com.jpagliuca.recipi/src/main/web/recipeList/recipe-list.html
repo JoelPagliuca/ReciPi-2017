@@ -22,18 +22,16 @@
             </th>
             <th>Tags</th>
             <th></th>
-            <th></th>
         </tr>
         </thead>
         <tbody>
         <tr ng-repeat="recipe in recipes | orderBy:sortType:sortReverse | filter:searchName">
-            <td>{{recipe.name}}</td>
+            <td><a href="#recipe?id={{recipe.id}}">{{recipe.name}}</a></td>
             <td>
                 <span ng-repeat="tag in recipe.tags" class="label label-primary">
                     {{ tag.name }}
                 </span>
             </td>
-            <td><a href="#recipe?id={{recipe.id}}">View</a></td>
             <td><a href="#recipe/edit?id={{recipe.id}}">Edit</a></td>
         </tr>
         </tbody>
