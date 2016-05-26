@@ -1,0 +1,64 @@
+[
+  [
+    {
+      "number": 1,
+      "ingredient": { "id": 0, "name": "pumpkin" },
+      "description": "squash up some pumpkin",
+      "unit":"kg",
+      "amount":1
+    },
+    {
+      "number": 2,
+      "ingredient": { "id": 1, "name": "water" },
+      "description": "add water",
+      "unit":"L",
+      "amount":0.5
+    }
+  ],
+  [
+    {
+      "number": 1,
+      "ingredient": { "id": 2, "name": "chicken" },
+      "description": "cook a chicked",
+      "unit":"unit",
+      "amount":1
+    },
+    {
+      "number": 2,
+      "ingredient": { "id": 3, "name": "herb" },
+      "description": "add herbs",
+      "unit":"g",
+      "amount":100
+    },
+    {
+      "number": 3,
+      "ingredient": { "id": 4, "name": "bread" },
+      "description": "serve with bread",
+      "unit":"loaf",
+      "amount":1
+    }
+  ],
+  [
+    {
+      "number": 1,
+      "ingredient": { "id": 4, "name": "bread" },
+      "description": "get a bread",
+      "unit":"loaf",
+      "amount":1
+    },
+    {
+      "number": 2,
+      "ingredient": { "id": 5, "name": "garlic" },
+      "description": "add garlic",
+      "unit":"clove",
+      "amount":5
+    },
+    {
+      "number": 3,
+      "ingredient": { "id": 4, "name": "bread" },
+      "description": "another one",
+      "unit":"loaf",
+      "amount":1
+    }
+  ]
+]
