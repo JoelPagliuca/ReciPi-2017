@@ -6,23 +6,6 @@ describe('controllers', function() {
         module('controllers');
     });
 
-    describe('recipeListController', function() {
-
-        var $scope;
-
-        beforeEach(inject(function ($rootScope, $controller) {
-            $scope = $rootScope.$new();
-            $controller('recipeListController as rl', {
-                $scope: $scope,
-                recipeService: { getRecipes: function(){ return [{},{},{},{}] } }
-            });
-        }));
-
-        it('should have an accurate item count', function() {
-            expect($scope.recipesCount).toBe(4);
-        });
-    });
-
     describe('getIngredientList', function() {
 
         var test_ingre = [
