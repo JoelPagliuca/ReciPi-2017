@@ -15,6 +15,9 @@ recipeController.$inject = ['$scope', '$routeParams', 'recipeService'];
  */
 function recipeController ($scope, $routeParams, recipeService) {
 
+    $scope.recipe = {};
+    $scope.tags = [];
+
     $scope.steps = [];
     $scope.ingredients = [];
     $scope.amount = {};
@@ -29,15 +32,18 @@ function recipeController ($scope, $routeParams, recipeService) {
         $scope.amount = ingredientData.amount;
         $scope.unit = ingredientData.unit;
     };
+    var saveRecipe = function(response) {
+        $scope.recipe = response;
+        $scope.tags = $scope.recipe.tags;
+    };
     var error = function(response) {
         console.log(response);
-    }
+    };
     // get the recipe id from the GET param
     $scope.recipe_id = $routeParams.id;
 
     // get the data
-    $scope.recipe = recipeService.getRecipe($scope.recipe_id);
-    $scope.tags = $scope.recipe.tags;
+    recipeService.getRecipe($scope.recipe_id, saveRecipe, error);
     recipeService.getSteps($scope.recipe_id, saveSteps, error);
 }
 

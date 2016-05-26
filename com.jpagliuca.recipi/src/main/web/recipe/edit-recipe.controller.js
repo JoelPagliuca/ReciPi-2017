@@ -16,11 +16,23 @@ function editRecipeController ($scope, $routeParams, recipeService) {
     $scope.allTags = [];
     $scope.allIngredients = [];
 
+    $scope.recipe = {};
+    $scope.tags = [];
+    $scope.steps = [];
+
     var saveTags = function(response) {
         $scope.allTags = response;
     };
     var saveIngredients = function(response) {
         $scope.allIngredients = response;
+    };
+    var saveRecipe = function(response) {
+        $scope.recipe = response;
+        $scope.tags = $scope.recipe.tags;
+    };
+    var saveSteps = function(response) {
+        $scope.steps = response;
+        $scope.step_number = $scope.steps[$scope.steps.length-1].number + 1;
     };
     var error = function(response){};
 
@@ -30,14 +42,10 @@ function editRecipeController ($scope, $routeParams, recipeService) {
     // get the existing recipe if we've asked for one (also steps)
     $scope.recipe_id = $routeParams.id;
     if ($scope.recipe_id) {
-        $scope.recipe = recipeService.getRecipe($scope.recipe_id);
-        $scope.tags = $scope.recipe.tags;
-        $scope.steps = recipeService.getSteps($scope.recipe_id);
-        $scope.step_number = $scope.steps[$scope.steps.length-1].number + 1;
+        recipeService.getRecipe($scope.recipe_id, saveRecipe, error);
+        recipeService.getSteps($scope.recipe_id, saveSteps, error);
     } else {
-        $scope.tags = [];
         $scope.recipe =  { tags: $scope.tags };
-        $scope.steps = [];
         $scope.recipe.name = "";
         $scope.step_number = 1;
     }
