@@ -16,7 +16,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'main/web/assets/js/angular.min.js',
+      'main/web/assets/js/angular.js',
       'main/web/assets/js/*.js',
       'main/web/*.js',
       'main/web/*/*.controller.js',
@@ -26,6 +26,7 @@ module.exports = function(config) {
 
     // list of files to exclude
     exclude: [
+      'main/web/assets/js/angular.min.js'
     ],
 
 

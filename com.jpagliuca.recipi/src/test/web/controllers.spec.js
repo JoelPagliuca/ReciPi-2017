@@ -45,10 +45,25 @@ describe('controllers', function() {
             expect(Object.keys(data.unit)).toEqual(['a', 'b', 'c']);
         });
 
+        it('should get the units correctly', function() {
+            var data = getIngredientList(test_steps);
+            expect(data.unit['a']).toBe('x');
+            expect(data.unit['b']).toBe('y');
+            expect(data.unit['c']).toBe('x');
+        });
+
+        it('should get the amounrs correctly', function() {
+            var data = getIngredientList(test_steps);
+            expect(data.amount['a']).toBe(1);
+            expect(data.amount['b']).toBe(2);
+            expect(data.amount['c']).toBe(3);
+        });
+
         it('should calculate the amount correctly', function() {
             test_steps[2].ingredient = 'a';
             var data = getIngredientList(test_steps);
             expect(data.amount['a']).toBe(4);
+            test_steps[2].ingredient = 'c'; // undo
         });
 
     });
