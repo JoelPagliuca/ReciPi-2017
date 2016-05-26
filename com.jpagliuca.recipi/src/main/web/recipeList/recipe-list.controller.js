@@ -12,9 +12,18 @@ recipeListController.$inject = ['$scope', 'recipeService'];
  * @param recipeService
  */
 function recipeListController ($scope, recipeService) {
-    var data = recipeService.getRecipes();
-    $scope.recipes = data;
-    $scope.recipesCount = data.length;
+    // values
+    $scope.recipes = [];
+    $scope.recipesCount = 0;
+
+    // functions for the services
+    var saveRecipes = function(response) {
+        $scope.recipes = response;
+        $scope.recipesCount = response.length;
+    };
+    var error = function(){};
+
+    recipeService.getRecipes(saveRecipes, error);
 
     // sorting
     $scope.sortType = '';

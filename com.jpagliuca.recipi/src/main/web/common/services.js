@@ -21,8 +21,14 @@ angular.module('services', [])
             return step_data[id];
         }
 
-        function getRecipes () {
-            return recipe_data;
+        function getRecipes (success, error) {
+            $http.get('/data/recipes.json')
+                .success(function(data) {
+                    success(data);
+                })
+                .error(function(data) {
+                    error(data);
+                });
         }
 
         function getRecipe (id) {

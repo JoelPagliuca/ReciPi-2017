@@ -1,0 +1,17 @@
+[
+  {
+    "id": 0,
+    "name": "Pumpkin Soup",
+    "tags": [{ "id": 0, "name": "dinner" }, { "id": 3, "name": "soup" }]
+  },
+  {
+    "id": 1,
+    "name": "Herb Chicken",
+    "tags": [{ "id": 0, "name": "dinner" }, { "id": 2, "name": "poultry" }]
+  },
+  {
+    "id": 2,
+    "name": "Garlic Bread",
+    "tags": [{ "id": 1, "name": "lunch" }]
+  }
+]
