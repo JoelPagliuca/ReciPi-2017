@@ -57,8 +57,14 @@ angular.module('services', [])
                 });
         }
 
-        function getIngredient (id) {
-            return ingredient_data[id];
+        function getIngredient (id, success, error) {
+            $http.get('/data/ingredients.json')
+                .success(function(data) {
+                    success(data[id]);
+                })
+                .error(function(data) {
+                    error(data);
+                });
         }
 
         function getTags (success, error) {
@@ -71,23 +77,13 @@ angular.module('services', [])
                 });
         }
 
-        function getTag (id) {
-            return tag_data[id];
+        function getTag (id, success, error) {
+            $http.get('/data/tags.json')
+                .success(function(data) {
+                    success(data[id]);
+                })
+                .error(function(data) {
+                    error(data);
+                });
         }
     }]);
-
-var tag_data = [
-    { id: 0, name: 'dinner' },
-    { id: 1, name: 'lunch' },
-    { id: 2, name: 'poultry' },
-    { id: 3, name: 'soup' }
-];
-
-var ingredient_data = [
-    { id: 0, name: 'pumpkin' },
-    { id: 1, name: 'water' },
-    { id: 2, name: 'chicken' },
-    { id: 3, name: 'herb' },
-    { id: 4, name: 'bread' },
-    { id: 5, name: 'garlic' }
-];
