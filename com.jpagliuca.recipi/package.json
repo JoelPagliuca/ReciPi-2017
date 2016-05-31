@@ -8,11 +8,16 @@
   },
   "readme": "../README.md",
   "license": "Apache-2.0",
+
   "dependencies": {
     "jasmine-core": "^2.4.1",
     "karma": "^0.13.22",
     "karma-jasmine": "^1.0.2",
     "karma-coverage": "^1.0.0",
     "karma-firefox-launcher": "^1.0.0"
+  },
+
+  "scripts": {
+    "test": "karma start --single-run"
   }
 }
