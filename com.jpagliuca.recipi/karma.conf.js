@@ -5,22 +5,28 @@ module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '../../', // com.jpagliuca.recipi/src
+    basePath: 'src', // com.jpagliuca.recipi/src
 
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['jasmine'],
 
-    //plugins : ['karma-jasmine', 'karma-phantomjs-launcher'],
+    plugins : [
+      'karma-jasmine',
+      'karma-firefox-launcher',
+      'karma-coverage'
+    ],
 
     // list of files / patterns to load in the browser
     files: [
       'main/web/assets/js/angular.js',
-      'main/web/assets/js/*.js',
+      'main/web/assets/js/angular-mocks.js',
+      'main/web/assets/js/angular-route.min.js',
       'main/web/*.js',
-      'main/web/*/*.controller.js',
-      'test/web/*/*.spec.js'
+      'main/web/**/*.controller.js',
+      'main/web/**/*.directive.js',
+      'test/web/**/*.spec.js'
     ],
 
 
@@ -33,13 +39,23 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+      'main/web/**/*.+(controller|directive).js': ['coverage']
     },
 
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['progress', 'coverage'],
+
+    coverageReporter: {
+      dir: '../coverage',
+      reporters: [
+        { type: 'html', subdir: 'html' },
+        { type: 'text', subdir: '.', file: 'text.txt' },
+        { type: 'text-summary' }
+      ]
+    },
 
 
     // web server port
@@ -56,20 +72,20 @@ module.exports = function(config) {
 
 
     // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: false,
+    autoWatch: true,
 
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS'],
+    browsers: ['Firefox'],
 
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: true,
+    singleRun: false,
 
     // Concurrency level
     // how many browser should be started simultaneous
     concurrency: Infinity
   })
-}
+};
