@@ -20,30 +20,30 @@ function editRecipeController ($scope, $routeParams, recipeService) {
     $scope.tags = [];
     $scope.steps = [];
 
-    var saveTags = function(response) {
+    var readTags = function(response) {
         $scope.allTags = response;
     };
-    var saveIngredients = function(response) {
+    var readIngredients = function(response) {
         $scope.allIngredients = response;
     };
-    var saveRecipe = function(response) {
+    var readRecipe = function(response) {
         $scope.recipe = response;
         $scope.tags = $scope.recipe.tags;
     };
-    var saveSteps = function(response) {
+    var readSteps = function(response) {
         $scope.steps = response;
         $scope.step_number = $scope.steps[$scope.steps.length-1].number + 1;
     };
-    var error = function(response){};
+    var error = function(response){ console.log("error") };
 
-    recipeService.getTags(saveTags, error);
-    recipeService.getIngredients(saveIngredients, error);
+    recipeService.getTags(readTags, error);
+    recipeService.getIngredients(readIngredients, error);
 
     // get the existing recipe if we've asked for one (also steps)
     $scope.recipe_id = $routeParams.id;
     if ($scope.recipe_id) {
-        recipeService.getRecipe($scope.recipe_id, saveRecipe, error);
-        recipeService.getSteps($scope.recipe_id, saveSteps, error);
+        recipeService.getRecipe($scope.recipe_id, readRecipe, error);
+        recipeService.getSteps($scope.recipe_id, readSteps, error);
     } else {
         $scope.recipe =  { tags: $scope.tags };
         $scope.recipe.name = "";
@@ -57,7 +57,7 @@ function editRecipeController ($scope, $routeParams, recipeService) {
     /**
      * TODO input validation
      */
-    this.addTag = function() {
+    $scope.addTag = function() {
         $scope.tags.push($scope.tag);
         $scope.tag = {};
     };
@@ -65,14 +65,14 @@ function editRecipeController ($scope, $routeParams, recipeService) {
     /**
      * TODO input validation
      */
-    this.addStep = function() {
+    $scope.addStep = function() {
         $scope.step.number = $scope.step_number;
         $scope.steps.push($scope.step);
         $scope.step = {};
         $scope.step_number += 1;
     };
 
-    this.saveRecipe = function() {
-        // save to the DB
+    $scope.saveRecipe = function() {
+        // TODO save to the DB
     };
 }

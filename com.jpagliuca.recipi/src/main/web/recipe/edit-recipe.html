@@ -12,7 +12,7 @@
             <select ng-model="tag" class="form-control" ng-options="tag.name for tag in allTags">
                 <option value="">Select a Tag</option>
             </select>
-            <input type="submit" class="btn btn-primary pull-right" value="Add tag" ng-click="editCtrl.addTag()" title="Tag"/>
+            <input type="submit" class="btn btn-primary pull-right" value="Add tag" ng-click="addTag()" title="Tag"/>
         </fieldset>
     </form>
     <h2>Steps</h2>
@@ -29,7 +29,7 @@
             </select>
             <input ng-model="step.unit" type="text" class="form-control" placeholder="unit" />
             <input ng-model="step.amount" type="number" class="form-control" placeholder="amount" />
-            <input type="submit" class="btn btn-primary pull-right" value="Add step" ng-click="editCtrl.addStep()" title="Step"/>
+            <input type="submit" class="btn btn-primary pull-right" value="Add step" ng-click="addStep()" title="Step"/>
         </fieldset>
     </form>
 </div>
