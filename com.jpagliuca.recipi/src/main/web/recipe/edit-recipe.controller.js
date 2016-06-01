@@ -34,7 +34,7 @@ function editRecipeController ($scope, $routeParams, recipeService) {
         $scope.steps = response;
         $scope.step_number = $scope.steps[$scope.steps.length-1].number + 1;
     };
-    var error = function(response){ console.log("error") };
+    var error = function(response){ /*console.log("error")*/ };
 
     recipeService.getTags(readTags, error);
     recipeService.getIngredients(readIngredients, error);
@@ -72,7 +72,7 @@ function editRecipeController ($scope, $routeParams, recipeService) {
         $scope.step_number += 1;
     };
 
-    $scope.saveRecipe = function() {
-        // TODO save to the DB
-    };
+    // $scope.saveRecipe = function() {
+    //     // TODO save to the DB
+    // };
 }
