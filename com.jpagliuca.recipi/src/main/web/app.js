@@ -5,7 +5,8 @@ var app = angular.module('recipi', [
     'ngRoute',
 
     'services',
-    'controllers'
+    'controllers',
+    'directives'
 ])
     .config(function($routeProvider) {
         $routeProvider

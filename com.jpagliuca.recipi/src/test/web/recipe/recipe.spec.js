@@ -1,6 +1,6 @@
 'use strict';
 
-describe('controllers', function() {
+describe('recipeController', function() {
 
     beforeEach(function() {
         module('controllers');
