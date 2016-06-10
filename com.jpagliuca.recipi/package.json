@@ -18,6 +18,9 @@
   },
 
   "scripts": {
+    "preinstall": "npm install http-server karma-cli -g",
+    "clean": "rm -r coverage node_modules",
+    "start": "http-server src/main/web/ -p 8080",
     "test": "karma start --single-run"
   }
 }
