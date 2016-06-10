@@ -17,6 +17,10 @@ describe('homeController', function() {
         });
     }));
 
+    it('should define recipesCount', function() {
+        expect($scope.recipesCount).toBeDefined();
+    });
+
     it('should have an accurate item count', function() {
         expect($scope.recipesCount).toBe(4);
     });
