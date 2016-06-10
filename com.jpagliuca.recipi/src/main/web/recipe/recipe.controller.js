@@ -36,9 +36,7 @@ function recipeController ($scope, $routeParams, recipeService) {
         $scope.recipe = response;
         $scope.tags = $scope.recipe.tags;
     };
-    var error = function(response) {
-        console.log(response);
-    };
+    var error = function(response) { /* console.log(response); */ };
     // get the recipe id from the GET param
     $scope.recipe_id = $routeParams.id;
 
