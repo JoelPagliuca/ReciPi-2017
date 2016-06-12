@@ -68,3 +68,6 @@ target/
 
 # node
 node_modules/
+
+# database stuff
+*.sqlite3
