@@ -2,6 +2,8 @@ from __future__ import unicode_literals
 
 from django.db import models
 
+__all__ = ['Ingredient', 'Tag', 'Recipe', 'Step']
+
 class Ingredient(models.Model):
     name = models.CharField(max_length=32)
 
