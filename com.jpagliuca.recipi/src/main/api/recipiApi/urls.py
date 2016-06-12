@@ -22,6 +22,7 @@ from recipi import views
 router = routers.DefaultRouter()
 router.register(r'ingredients', views.IngredientViewSet)
 router.register(r'tags', views.TagViewSet)
+router.register(r'recipe', views.RecipeViewSet)
 
 urlpatterns = [
     url(r'^', include(router.urls)),
