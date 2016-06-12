@@ -38,4 +38,5 @@ class StepSerializer(serializers.HyperlinkedModelSerializer):
             'ingredient',
             'unit',
             'amount',
+            'description',
         )
