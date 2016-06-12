@@ -23,6 +23,7 @@ router = routers.DefaultRouter()
 router.register(r'ingredients', views.IngredientViewSet)
 router.register(r'tags', views.TagViewSet)
 router.register(r'recipe', views.RecipeViewSet)
+router.register(r'step', views.StepViewSet)
 
 urlpatterns = [
     url(r'^', include(router.urls)),
