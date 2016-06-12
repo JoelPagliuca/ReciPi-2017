@@ -7,17 +7,18 @@ __all__ = ['IngredientSerializer', 'TagSerializer', 'RecipeSerializer', 'StepSer
 class IngredientSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Ingredient
-        fields = ('name',)
+        fields = ('id', 'name',)
 
 class TagSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Tag
-        fields = ('name',)
+        fields = ('id', 'name',)
 
 class RecipeSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Recipe
         fields = (
+            'id',
             'name',
             'description',
             'image',
