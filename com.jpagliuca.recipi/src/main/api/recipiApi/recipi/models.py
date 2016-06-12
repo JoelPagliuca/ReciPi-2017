@@ -7,8 +7,14 @@ __all__ = ['Ingredient', 'Tag', 'Recipe', 'Step']
 class Ingredient(models.Model):
     name = models.CharField(max_length=32)
 
+    def __str__(self):
+        return self.name
+
 class Tag(models.Model):
     name = models.CharField(max_length=32)
+
+    def __str__(self):
+        return self.name
 
 class Recipe(models.Model):
     DIFFICULTY_CHOICES = (
@@ -27,12 +33,16 @@ class Recipe(models.Model):
     time_other = models.IntegerField()
     tags = models.ManyToManyField(Tag)
 
+    def __str__(self):
+        return self.name
+
 class Step(models.Model):
     number = models.IntegerField()
     recipe = models.ForeignKey(Recipe)
     ingredient = models.ForeignKey(Ingredient)
     unit = models.CharField(max_length=16)
     amount = models.IntegerField()
+    description = models.CharField(max_length=256, default="")
 
     class Meta:
         unique_together = (('number', 'recipe'),)
