@@ -1,6 +1,6 @@
 'use strict';
 
-var API = "127.0.0.1:8083/";
+var API = "http://127.0.0.1:8083/";
 
 angular.module('services', [])
 
@@ -10,8 +10,6 @@ angular.module('services', [])
             getRecipes: getRecipes,
             getRecipe: getRecipe,
 
-            getSteps: getSteps,
-
             getIngredients: getIngredients,
             getIngredient: getIngredient,
 
@@ -19,18 +17,8 @@ angular.module('services', [])
             getTag: getTag
         };
 
-        function getSteps (recipe_id, success, error) {
-            $http.get('/data/steps.json')
-                .success(function(data) {
-                    success(data[recipe_id]);
-                })
-                .error(function(data) {
-                    error(data[recipe_id]);
-                });
-        }
-
         function getRecipes (success, error) {
-            $http.get('/data/recipes.json')
+            $http.get(API+'recipes/')
                 .success(function(data) {
                     success(data);
                 })
@@ -40,9 +28,9 @@ angular.module('services', [])
         }
 
         function getRecipe (id, success, error) {
-            $http.get('/data/recipes.json')
+            $http.get(API+'recipes/'+id)
                 .success(function(data) {
-                    success(data[id]);
+                    success(data);
                 })
                 .error(function(data) {
                     error(data);

@@ -24,17 +24,22 @@ function recipeController ($scope, $routeParams, recipeService) {
     $scope.unit = {};
 
     var saveSteps = function(response) {
-        $scope.steps = response;
-        var ingredientData = getIngredientList($scope.steps);
-        // ingredients calculation
-        $scope.ingredients = ingredientData.ingredients;
-        // maps for amounts and quantities
-        $scope.amount = ingredientData.amount;
-        $scope.unit = ingredientData.unit;
+
     };
     var saveRecipe = function(response) {
         $scope.recipe = response;
         $scope.tags = $scope.recipe.tags;
+        $scope.steps = $scope.recipe.steps;
+        if($scope.steps) {
+            var ingredientData = getIngredientList($scope.steps);
+            // ingredients calculation
+            $scope.ingredients = ingredientData.ingredients;
+            // maps for amounts and quantities
+            $scope.amount = ingredientData.amount;
+            $scope.unit = ingredientData.unit;
+        } else {
+            $scope.steps = [];
+        }
     };
     var error = function(response) { /* console.log(response); */ };
     // get the recipe id from the GET param
@@ -42,7 +47,6 @@ function recipeController ($scope, $routeParams, recipeService) {
 
     // get the data
     recipeService.getRecipe($scope.recipe_id, saveRecipe, error);
-    recipeService.getSteps($scope.recipe_id, saveSteps, error);
 }
 
 /**
