@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 
-__all__ = ['Ingredient', 'Tag', 'Recipe', 'Step']
+__all__ = ['Ingredient', 'Tag', 'Recipe', 'Step', 'Time']
 
 class Ingredient(models.Model):
     name = models.CharField(max_length=32)
@@ -16,6 +16,11 @@ class Tag(models.Model):
     def __str__(self):
         return self.name
 
+class Time(models.Model):
+    prep = models.IntegerField(default=0)
+    cook = models.IntegerField(default=0)
+    other = models.IntegerField(default=0)
+
 class Recipe(models.Model):
     DIFFICULTY_CHOICES = (
         ('F', 'Foetus'),
@@ -28,9 +33,7 @@ class Recipe(models.Model):
     image = models.CharField(max_length=32)
     difficulty = models.CharField(max_length=8, choices=DIFFICULTY_CHOICES)
     serves = models.IntegerField()
-    time_prep = models.IntegerField()
-    time_cook = models.IntegerField()
-    time_other = models.IntegerField()
+    time = models.ForeignKey(Time, default=1)
     tags = models.ManyToManyField(Tag)
 
     def __str__(self):
