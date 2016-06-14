@@ -9,12 +9,29 @@ class IngredientSerializer(serializers.HyperlinkedModelSerializer):
         model = Ingredient
         fields = ('id', 'name',)
 
-class TagSerializer(serializers.HyperlinkedModelSerializer):
+class TagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
         fields = ('id', 'name',)
 
-class RecipeSerializer(serializers.HyperlinkedModelSerializer):
+class StepSerializer(serializers.ModelSerializer):
+    ingredient = IngredientSerializer()
+
+    class Meta:
+        model = Step
+        fields = (
+            'number',
+            'recipe',
+            'ingredient',
+            'unit',
+            'amount',
+            'description',
+        )
+
+class RecipeSerializer(serializers.ModelSerializer):
+    tags = TagSerializer(many=True)
+    steps = StepSerializer(many=True)
+
     class Meta:
         model = Recipe
         fields = (
@@ -28,16 +45,5 @@ class RecipeSerializer(serializers.HyperlinkedModelSerializer):
             'time_cook',
             'time_other',
             'tags',
-        )
-
-class StepSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Step
-        fields = (
-            'number',
-            'recipe',
-            'ingredient',
-            'unit',
-            'amount',
-            'description',
+            'steps',
         )
