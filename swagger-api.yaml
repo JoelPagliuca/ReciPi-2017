@@ -1,0 +1,185 @@
+swagger: '2.0'
+
+####################
+#     METADATA
+####################
+info:
+  version: "0.0.0"
+  title: ReciPi
+host: localhost:8083
+basePath: /rest
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+  - text/html
+
+####################
+#     PATHS
+####################
+paths:
+  /tags:
+    get:
+      tags:
+        - Tag
+      summary: Get all the tags
+      responses:
+        200:
+          description: OK
+          schema:
+            title: Array of tags
+            type: array
+            items:
+              $ref: '#/definitions/tag'
+    post:
+      summary: Add a new tag
+      parameters:
+        - name: tag
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/tag'
+      responses:
+        200:
+          description: OK
+  /tag/{id}:
+    get:
+      summary: Get a tag
+      parameters:
+        - name: id
+          in: path
+          description: the id for the tag
+          required: true
+          type: number
+      responses:
+        200:
+          description: OK
+          schema:
+              $ref: '#/definitions/tag'
+    put:
+      summary: Update a tag
+      parameters:
+        - name: id
+          in: path
+          description: the id for the tag
+          required: true
+          type: number
+        - name: tag
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/tag'
+      responses:
+        200:
+          description: OK
+    delete:
+      summary: Delete a tag
+      parameters:
+        - name: id
+          in: path
+          description: the id for the tag
+          required: true
+          type: number
+      responses:
+        200:
+          description: OK
+  /ingredients:
+    get:
+      summary: Get all the ingredients
+      responses:
+        200:
+          description: OK
+          schema:
+            title: Array of ingredients
+            type: array
+            items:
+              $ref: '#/definitions/ingredient'
+  /recipe:
+    get:
+      summary: Get all the recipes
+      responses:
+        200:
+          description: OK
+          schema:
+            title: Array of recipes
+            type: array
+            items:
+              $ref: '#/definitions/recipe'
+              
+####################
+#   DEFINITIONS
+####################
+definitions:
+  tag:
+    type: object
+    properties:
+      id:
+        type: number
+      name:
+        type: string
+  ingredient:
+    type: object
+    properties:
+      id:
+        type: number
+      name:
+        type: string
+  step:
+    type: object
+    properties:
+      number:
+        type: number
+        description: step number within recipe
+      ingredient:
+        $ref: '#/definitions/ingredient'
+      description:
+        type: string
+      unit:
+        type: string
+      amount:
+        type: number
+  time:
+    type: object
+    properties:
+      prep:
+        type: number
+      cook:
+        type: number
+      other:
+        type: number
+  recipe:
+    type: object
+    properties:
+      id:
+        type: number
+      name:
+        type: string
+      description:
+        type: string
+      image:
+        type: string
+        description: location of image file
+      tags:
+        type: array
+        items:
+          $ref: '#/definitions/tag'
+      difficulty:
+        type: string
+        enum:
+          - breezy
+          - tricky
+          - expert
+      serves:
+        type: number
+      time:
+        $ref: '#/definitions/time'
+      notes:
+        type: array
+        items:
+          type: string
+      steps:
+        type: array
+        items:
+          $ref: '#/definitions/step'
