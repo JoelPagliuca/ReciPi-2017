@@ -6,20 +6,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
- * A tag for a recipe
- * Created by joelp on 8/08/16.
+ * An ingredient
  */
 @Entity
-public class Tag {
+public class Ingredient {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String name;
 
-    protected Tag() {} // for JPA
+    protected Ingredient() {}
 
-    public Tag(String name) {
+    public Ingredient(String name) {
         this.name = name;
     }
 
@@ -34,7 +33,7 @@ public class Tag {
     @Override
     public String toString() {
         return String.format(
-                "Tag[id=%d, name='%s']",
+                "Ingredient[id=%d, name='%s']",
                 id, name
         );
     }
