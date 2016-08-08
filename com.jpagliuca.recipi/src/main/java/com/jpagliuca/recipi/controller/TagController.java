@@ -1,10 +1,14 @@
 package com.jpagliuca.recipi.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMethod;
+import com.jpagliuca.recipi.service.TagService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import com.jpagliuca.recipi.model.Tag;
+
+import java.util.List;
 
 /**
  * Controller for Tags
@@ -12,9 +16,18 @@ import com.jpagliuca.recipi.model.Tag;
 @RestController
 public class TagController {
 
-    @RequestMapping(value = "/tag", method = RequestMethod.GET)
-    public Tag tagIdGet() {
-        return new Tag(1234, "a tag");
+    @Autowired
+    private TagService service;
+
+    @RequestMapping(value = "/tag/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Tag> tagIdGet(@PathVariable("id") long id) {
+        Tag tag = service.getById(id);
+        return new ResponseEntity<>(tag, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/tags", method = RequestMethod.GET)
+    public ResponseEntity<List<Tag>> tagsGet() {
+        return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
     }
 
 }

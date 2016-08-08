@@ -1,6 +1,7 @@
 package com.jpagliuca.recipi.model;
 
 /**
+ * A tag for a recipe
  * Created by joelp on 8/08/16.
  */
 public class Tag {
