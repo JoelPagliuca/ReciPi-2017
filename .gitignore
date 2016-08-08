@@ -1,73 +1,41 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
-
-# C extensions
-*.so
-
-# Distribution / packaging
-.Python
-env/
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
+.gradle
+*.sw?
+.#*
+*#
+*~
+/build
+/code
+.classpath
+.project
+.settings
+.metadata
+.factorypath
+.recommenders
+bin
+build
 lib/
-lib64/
-parts/
-sdist/
-var/
-*.egg-info/
-.installed.cfg
-*.egg
-
-# PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
-
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*,cover
-.hypothesis/
-coverage/
-
-# Translations
-*.mo
-*.pot
-
-# Django stuff:
-*.log
-
-# Sphinx documentation
-docs/_build/
-
-# PyBuilder
-target/
-
-#Ipython Notebook
-.ipynb_checkpoints
-
-# intellij
-.idea/*
+target
+.factorypath
+.springBeans
+interpolated*.xml
+dependency-reduced-pom.xml
+build.log
+_site/
+.*.md.html
+manifest.yml
+MANIFEST.MF
+settings.xml
+activemq-data
+overridedb.*
 *.iml
+*.ipr
+*.iws
+.idea
+*.jar
+.DS_Store
+.factorypath
+dump.rdb
+transaction-logs
 
-# node
+coverage/
 node_modules/
-
-# database stuff
-*.sqlite3
