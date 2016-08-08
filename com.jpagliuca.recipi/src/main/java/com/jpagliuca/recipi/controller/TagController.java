@@ -14,11 +14,8 @@ import java.util.List;
 /**
  * Controller for Tags
  */
-@RestController
+//@RestController looks like the repository setup is better
 public class TagController {
-
-    @Autowired
-    private TagService service;
 
     @Autowired
     private TagRepository repository;
