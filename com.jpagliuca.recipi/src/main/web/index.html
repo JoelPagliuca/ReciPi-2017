@@ -1,0 +1,42 @@
+<html ng-app="recipi">
+<head>
+    <!--CSS-->
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/recipi.css" />
+
+    <!--Angular-->
+    <script type="text/javascript" src="assets/js/angular.js"></script>
+    <script type="text/javascript" src="assets/js/angular-route.min.js"></script>
+
+    <!--Angular scripts-->
+    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="common/services.js"></script>
+    <script type="text/javascript" src="controllers.js"></script>
+    <script type="text/javascript" src="directives.js"></script>
+
+    <script type="text/javascript" src="home/home.controller.js"></script>
+    <script type="text/javascript" src="recipe/recipe.controller.js"></script>
+    <script type="text/javascript" src="recipe/edit-recipe.controller.js"></script>
+    <script type="text/javascript" src="recipeList/recipe-list.controller.js"></script>
+
+    <script type="text/javascript" src="common/navbar/navbar.directive.js"></script>
+    <script type="text/javascript" src="recipe/step-list.directive.js"></script>
+    <script type="text/javascript" src="recipe/ingredient-list.directive.js"></script>
+    <script type="text/javascript" src="recipe/tag-list.directive.js"></script>
+    <script type="text/javascript" src="common/footer/footer.directive.js"></script>
+</head>
+<!--Navbar header-->
+<navbar></navbar>
+
+
+<!--Main content-->
+<div id="main" class="container">
+    <div ng-view></div>
+</div>
+
+<!--Footer-->
+<new-footer></new-footer>
+
+</body>
+</html>

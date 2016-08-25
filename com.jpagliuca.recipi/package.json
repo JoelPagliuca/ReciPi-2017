@@ -1,0 +1,26 @@
+{
+  "name": "Recipi",
+  "version": "0.0.1",
+  "description": "Djangular Recipe Web app to run on a Raspberry Pi",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JoelPagliuca/ReciPi"
+  },
+  "readme": "../README.md",
+  "license": "Apache-2.0",
+
+  "dependencies": {
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.22",
+    "karma-jasmine": "^1.0.2",
+    "karma-coverage": "^1.0.0",
+    "karma-firefox-launcher": "^1.0.0"
+  },
+
+  "scripts": {
+    "preinstall": "npm install http-server karma-cli -g",
+    "clean": "rm -r coverage node_modules",
+    "start": "http-server src/main/web/ -p 8080",
+    "test": "karma start --single-run"
+  }
+}
