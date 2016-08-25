@@ -26,6 +26,6 @@ router.register(r'recipes', views.RecipeViewSet)
 router.register(r'steps', views.StepViewSet)
 
 urlpatterns = [
-    url(r'^', include(router.urls)),
+    url(r'^api/', include(router.urls)),
     url(r'^admin/', admin.site.urls),
 ]

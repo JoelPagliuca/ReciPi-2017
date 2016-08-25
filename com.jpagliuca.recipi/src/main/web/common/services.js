@@ -1,6 +1,6 @@
 'use strict';
 
-var API = "127.0.0.1:8083/";
+var API = "/api";
 
 angular.module('services', [])
 
@@ -50,7 +50,7 @@ angular.module('services', [])
         }
 
         function getIngredients (success, error) {
-            $http.get(API+'ingredients/')
+            $http.get(API+'/ingredients')
                 .success(function(data) {
                     success(data);
                 })
@@ -60,7 +60,7 @@ angular.module('services', [])
         }
 
         function getIngredient (id, success, error) {
-            $http.get(API+'ingredients/')
+            $http.get(API+'/ingredients')
                 .success(function(data) {
                     success(data[id]);
                 })
@@ -70,7 +70,7 @@ angular.module('services', [])
         }
 
         function getTags (success, error) {
-            $http.get(API+'tags/')
+            $http.get(API+'/tags')
                 .success(function(data) {
                     success(data);
                 })
@@ -80,7 +80,7 @@ angular.module('services', [])
         }
 
         function getTag (id, success, error) {
-            $http.get(API+'tags/')
+            $http.get(API+'/tags')
                 .success(function(data) {
                     success(data[id]);
                 })
