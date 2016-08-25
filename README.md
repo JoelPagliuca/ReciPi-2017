@@ -8,6 +8,7 @@ cd com.jpagliuca.recipi
 npm install
 npm start
 pip install -r requirement.txt
+python src/main/api/manage.py migrate
 ./startapi.sh
 ```
 
