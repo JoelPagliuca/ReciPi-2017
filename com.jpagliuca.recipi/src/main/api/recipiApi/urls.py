@@ -28,4 +28,5 @@ router.register(r'steps', views.StepViewSet)
 urlpatterns = [
     url(r'^api/', include(router.urls)),
     url(r'^admin/', admin.site.urls),
+    url('', views.documentation_view),
 ]
