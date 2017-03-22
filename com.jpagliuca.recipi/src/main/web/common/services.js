@@ -1,10 +1,8 @@
 'use strict';
 
-var API = "/api";
-
 angular.module('services', [])
 
-    .factory('recipeService', ['$http', function($http) {
+    .factory('recipeService', ['$http', 'API', function($http, API) {
 
         return {
             getRecipes: getRecipes,

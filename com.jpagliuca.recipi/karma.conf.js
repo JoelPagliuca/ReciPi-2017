@@ -23,6 +23,7 @@ module.exports = function(config) {
       'main/web/assets/js/angular.js',
       'main/web/assets/js/angular-mocks.js',
       'main/web/assets/js/angular-route.min.js',
+      'main/web/app.module.js',
       'main/web/*.js',
       'main/web/**/*.controller.js',
       'main/web/**/*.directive.js',

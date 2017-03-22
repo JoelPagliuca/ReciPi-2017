@@ -68,6 +68,10 @@ target/
 
 # node
 node_modules/
+*debug.log*
 
 # database stuff
 *.sqlite3
+
+# vagrant
+.vagrant

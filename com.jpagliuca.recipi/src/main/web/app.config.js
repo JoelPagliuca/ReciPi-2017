@@ -1,16 +1,15 @@
 'use strict';
+/**
+ * Configuration for the app
+ */
+angular.module('recipi')
 
-var app = angular.module('recipi', [
-// dependencies
-    'ngRoute',
-
-    'services',
-    'controllers',
-    'directives'
-])
+/**
+ * Routing config
+ */
     .config(function($routeProvider) {
         $routeProvider
-            // home page
+        // home page
             .when('/home', {
                 templateUrl: 'home/home.html',
                 controller: homeController
