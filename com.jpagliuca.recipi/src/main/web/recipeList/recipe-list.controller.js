@@ -23,7 +23,7 @@ function recipeListController ($scope, recipeService) {
     };
     var error = function(){};
 
-    recipeService.getRecipes(saveRecipes, error);
+    recipeService.getRecipes().success(saveRecipes(data));
 
     // sorting
     $scope.sortType = '';

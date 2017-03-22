@@ -170,7 +170,7 @@ describe('recipeController', function() {
                 $scope: scope,
                 $routeParams: {id:1},
                 recipeService: service
-            });
+            }); //TODO
         }));
 
         it('should define the variables recipe, tags, steps, ingredients, amount, unit on scope', function() {

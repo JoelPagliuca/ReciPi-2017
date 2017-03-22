@@ -36,13 +36,12 @@ function recipeController ($scope, $routeParams, recipeService) {
         $scope.recipe = response;
         $scope.tags = $scope.recipe.tags;
     };
-    var error = function(response) { /* console.log(response); */ };
     // get the recipe id from the GET param
     $scope.recipe_id = $routeParams.id;
 
     // get the data
-    recipeService.getRecipe($scope.recipe_id, saveRecipe, error);
-    recipeService.getSteps($scope.recipe_id, saveSteps, error);
+    recipeService.getRecipe($scope.recipe_id).success(saveRecipe(data));
+    recipeService.getSteps($scope.recipe_id).success(saveSteps(data));
 }
 
 /**
