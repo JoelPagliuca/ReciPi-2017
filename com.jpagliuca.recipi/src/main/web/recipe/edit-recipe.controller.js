@@ -36,14 +36,14 @@ function editRecipeController ($scope, $routeParams, recipeService) {
     };
     var error = function(response){ /*console.log("error")*/ };
 
-    recipeService.getTags(readTags, error);
-    recipeService.getIngredients(readIngredients, error);
+    recipeService.getTags(readTags, error); //TODO
+    recipeService.getIngredients(readIngredients, error); //TODO
 
     // get the existing recipe if we've asked for one (also steps)
     $scope.recipe_id = $routeParams.id;
     if ($scope.recipe_id) {
-        recipeService.getRecipe($scope.recipe_id, readRecipe, error);
-        recipeService.getSteps($scope.recipe_id, readSteps, error);
+        recipeService.getRecipe($scope.recipe_id, readRecipe, error); //TODO
+        recipeService.getSteps($scope.recipe_id, readSteps, error); //TODO
     } else {
         $scope.recipe =  { tags: $scope.tags };
         $scope.recipe.name = "";

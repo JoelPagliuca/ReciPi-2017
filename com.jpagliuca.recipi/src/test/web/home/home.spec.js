@@ -13,7 +13,7 @@ describe('homeController', function() {
         $scope = $rootScope.$new();
         $controller('homeController as h', {
             $scope: $scope,
-            recipeService: { getRecipes: function(s,e){ s(recipe_data); e({}); } }
+            recipeService: { getRecipes: function(s,e){ s(recipe_data); e({}); } } //TODO
         });
     }));
 

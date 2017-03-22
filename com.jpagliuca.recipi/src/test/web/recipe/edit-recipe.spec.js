@@ -125,7 +125,7 @@ describe('editRecipeController', function() {
                 $scope: scope,
                 $routeParams: {},
                 recipeService: service
-            });
+            }); //TODO
         }));
 
         it('should be defined', function() {
@@ -170,7 +170,7 @@ describe('editRecipeController', function() {
                 $scope: scope,
                 $routeParams: {id:1},
                 recipeService: service
-            });
+            }); //TODO
         }));
 
         it('should try to get the right recipe', function() {

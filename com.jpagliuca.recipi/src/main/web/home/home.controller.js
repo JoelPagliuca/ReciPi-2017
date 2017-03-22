@@ -22,5 +22,5 @@ function homeController ($scope, recipeService) {
         $scope.recipe_id = getRandomRecipe($scope.recipesCount);
     }
 
-    recipeService.getRecipes(getRecipesCount, function(){});
+    recipeService.getRecipes(getRecipesCount, function(){}); // TODO
 }
