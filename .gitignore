@@ -46,10 +46,6 @@ coverage.xml
 .hypothesis/
 coverage/
 
-# Translations
-*.mo
-*.pot
-
 # Django stuff:
 *.log
 
@@ -59,12 +55,10 @@ docs/_build/
 # PyBuilder
 target/
 
-#Ipython Notebook
-.ipynb_checkpoints
-
-# intellij
+# IDE
 .idea/
 *.iml
+.vscode/*
 
 # node
 node_modules/
