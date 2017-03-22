@@ -40,8 +40,8 @@ function recipeController ($scope, $routeParams, recipeService) {
     $scope.recipe_id = $routeParams.id;
 
     // get the data
-    recipeService.getRecipe($scope.recipe_id).success(saveRecipe(data));
-    recipeService.getSteps($scope.recipe_id).success(saveSteps(data));
+    recipeService.getRecipe($scope.recipe_id).success(saveRecipe);
+    recipeService.getSteps($scope.recipe_id).success(saveSteps);
 }
 
 /**

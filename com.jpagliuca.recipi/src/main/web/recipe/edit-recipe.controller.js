@@ -35,14 +35,14 @@ function editRecipeController ($scope, $routeParams, recipeService) {
         $scope.step_number = $scope.steps[$scope.steps.length-1].number + 1;
     };
 
-    recipeService.getTags().success(readTags(data));
-    recipeService.getIngredients().success(readIngredients(data));
+    recipeService.getTags().success(readTags);
+    recipeService.getIngredients().success(readIngredients);
 
     // get the existing recipe if we've asked for one (also steps)
     $scope.recipe_id = $routeParams.id;
     if ($scope.recipe_id) {
-        recipeService.getRecipe($scope.recipe_id).success(readRecipe(data));
-        recipeService.getSteps($scope.recipe_id).success(readSteps(data));
+        recipeService.getRecipe($scope.recipe_id).success(readRecipe);
+        recipeService.getSteps($scope.recipe_id).success(readSteps);
     } else {
         $scope.recipe =  { tags: $scope.tags };
         $scope.recipe.name = "";

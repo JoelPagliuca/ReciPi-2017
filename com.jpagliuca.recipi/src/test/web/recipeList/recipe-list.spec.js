@@ -11,9 +11,9 @@ describe('recipeListController', function() {
     beforeEach(inject(function ($rootScope, $controller) {
         var recipe_data = [{},{},{},{}];
         $scope = $rootScope.$new();
-        $controller('recipeListController as rl', {
+        $controller('recipeListController', {
             $scope: $scope,
-            recipeService: { getRecipes: function(s,e){ s(recipe_data); e({}) } } //TODO
+            recipeService: { getRecipes: function(){ return {success : function(fn){fn(recipe_data)}} }}
         });
     }));
 
