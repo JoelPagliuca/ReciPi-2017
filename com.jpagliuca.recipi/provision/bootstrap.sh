@@ -7,6 +7,9 @@ apt-get update
 # install g++ to compile stuff
 apt-get install -y g++
 
+# install git for bower
+apt-get install -y git
+
 # install node.js the usual way
 curl -sL https://deb.nodesource.com/setup_7.x | sh
 apt-get install -y nodejs
@@ -19,7 +22,8 @@ apt-get -y install nginx
 
 # dependencies
 npm install
-npm install http-server -g
+npm install http-server bower -g
+bower install
 pip install -r requirements.txt
 
 # migrations
