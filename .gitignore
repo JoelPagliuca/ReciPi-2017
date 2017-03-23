@@ -62,6 +62,7 @@ target/
 
 # node
 node_modules/
+bower_components/
 *debug.log*
 
 # database stuff
