@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('controllers')
+angular.module('recipi')
 
     .controller('recipeController', recipeController);
 

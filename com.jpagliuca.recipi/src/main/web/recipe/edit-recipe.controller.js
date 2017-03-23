@@ -1,6 +1,6 @@
 'use static';
 
-angular.module('controllers')
+angular.module('recipi')
 
     .controller('editRecipeController', editRecipeController);
 

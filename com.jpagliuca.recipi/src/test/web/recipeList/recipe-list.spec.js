@@ -5,7 +5,7 @@ describe('recipeListController', function() {
     var $scope;
 
     beforeEach(function() {
-        module('controllers');
+        module('recipi');
     });
 
     beforeEach(inject(function ($rootScope, $controller) {

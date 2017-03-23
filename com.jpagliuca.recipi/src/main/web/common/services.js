@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('recipi', []).service('recipeService', recipeService);
+angular.module('recipi').service('recipeService', recipeService);
 
 recipeService.$inject = ['$http', 'API'];
 

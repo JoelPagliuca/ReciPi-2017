@@ -5,7 +5,7 @@ describe('homeController', function() {
     var scope, controller, service;
 
     beforeEach(function() {
-        module('controllers');
+        module('recipi');
     });
 
     beforeEach(inject(function ($rootScope, $controller) {

@@ -103,7 +103,7 @@ describe('recipeController', function() {
     ]];
 
     beforeEach(function() {
-        module('controllers');
+        module('recipi');
         service = {
             getRecipe: function(i){ return {success : function(fn){fn(recipe_data[i])}} },
             getSteps: function(i){ return {success : function(fn){fn(step_data[i])}} }

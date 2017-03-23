@@ -108,7 +108,7 @@ describe('editRecipeController', function() {
         ]];
 
     beforeEach(function() {
-        module('controllers');
+        module('recipi');
         service = {
             getTags: function(){ return {success : function(fn){fn(tag_data)}} },
             getIngredients: function(){ return {success : function(fn){fn(ingredient_data)}} },
