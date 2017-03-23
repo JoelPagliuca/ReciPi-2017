@@ -9,7 +9,7 @@ angular.module('recipi')
  */
     .config(function($routeProvider) {
         $routeProvider
-        // home page
+            // home page
             .when('/home', {
                 templateUrl: 'home/home.html',
                 controller: homeController

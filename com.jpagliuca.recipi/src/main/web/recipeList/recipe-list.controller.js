@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('controllers')
+angular.module('recipi')
 
     .controller('recipeListController', recipeListController);
 
@@ -23,7 +23,7 @@ function recipeListController ($scope, recipeService) {
     };
     var error = function(){};
 
-    recipeService.getRecipes(saveRecipes, error);
+    recipeService.getRecipes().success(saveRecipes);
 
     // sorting
     $scope.sortType = '';

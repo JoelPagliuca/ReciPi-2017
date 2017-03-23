@@ -1,89 +1,43 @@
 'use strict';
 
-angular.module('services', [])
+angular.module('recipi').service('recipeService', recipeService);
 
-    .factory('recipeService', ['$http', 'API', function($http, API) {
+recipeService.$inject = ['$http', 'API'];
 
-        return {
-            getRecipes: getRecipes,
-            getRecipe: getRecipe,
+/**
+ * basically, all of the interface with the api
+ * @param {*} http does the http calls
+ * @param {*} API API URL
+ */
+function recipeService($http, API) {
 
-            getSteps: getSteps,
+    var self = this;
 
-            getIngredients: getIngredients,
-            getIngredient: getIngredient,
+    self.getSteps = function(recipe_id) {
+        return $http.get('/data/steps.json');
+    }
 
-            getTags: getTags,
-            getTag: getTag
-        };
+    self.getRecipes = function() {
+        return $http.get('/data/recipes.json');
+    }
 
-        function getSteps (recipe_id, success, error) {
-            $http.get('/data/steps.json')
-                .success(function(data) {
-                    success(data[recipe_id]);
-                })
-                .error(function(data) {
-                    error(data[recipe_id]);
-                });
-        }
+    self.getRecipe = function(id) {
+        return $http.get('/data/recipes.json');
+    }
 
-        function getRecipes (success, error) {
-            $http.get('/data/recipes.json')
-                .success(function(data) {
-                    success(data);
-                })
-                .error(function(data) {
-                    error(data);
-                });
-        }
+    self.getIngredients = function() {
+        return $http.get(API+'/ingredients');
+    }
 
-        function getRecipe (id, success, error) {
-            $http.get('/data/recipes.json')
-                .success(function(data) {
-                    success(data[id]);
-                })
-                .error(function(data) {
-                    error(data);
-                });
-        }
+    self.getIngredient = function(id) {
+        return $http.get(API+'/ingredients');
+    }
 
-        function getIngredients (success, error) {
-            $http.get(API+'/ingredients')
-                .success(function(data) {
-                    success(data);
-                })
-                .error(function(data) {
-                    error(data);
-                });
-        }
+    self.getTags = function() {
+        return $http.get(API+'/tags');
+    }
 
-        function getIngredient (id, success, error) {
-            $http.get(API+'/ingredients')
-                .success(function(data) {
-                    success(data[id]);
-                })
-                .error(function(data) {
-                    error(data);
-                });
-        }
-
-        function getTags (success, error) {
-            $http.get(API+'/tags')
-                .success(function(data) {
-                    success(data);
-                })
-                .error(function(data) {
-                    error(data);
-                });
-        }
-
-        function getTag (id, success, error) {
-            $http.get(API+'/tags')
-                .success(function(data) {
-                    success(data[id]);
-                })
-                .error(function(data) {
-                    error(data);
-                });
-        }
-    }]);
+    self.getTag = function(id) {
+        return $http.get(API+'/tags');
+    }
+}

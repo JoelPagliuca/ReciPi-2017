@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('controllers')
+angular.module('recipi')
 
     .controller('homeController', homeController);
 
@@ -22,5 +22,5 @@ function homeController ($scope, recipeService) {
         $scope.recipe_id = getRandomRecipe($scope.recipesCount);
     }
 
-    recipeService.getRecipes(getRecipesCount, function(){});
+    recipeService.getRecipes().success(getRecipesCount); //TODO endpoint for count
 }

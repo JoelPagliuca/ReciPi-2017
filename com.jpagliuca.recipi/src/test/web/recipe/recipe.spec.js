@@ -103,10 +103,10 @@ describe('recipeController', function() {
     ]];
 
     beforeEach(function() {
-        module('controllers');
+        module('recipi');
         service = {
-            getRecipe: function(i,s,e){ s(recipe_data[i]); e({}); },
-            getSteps: function(i,s,e){ s(step_data[i]); e({}); }
+            getRecipe: function(i){ return {success : function(fn){fn(recipe_data[i])}} },
+            getSteps: function(i){ return {success : function(fn){fn(step_data[i])}} }
         };
     });
 
@@ -170,7 +170,7 @@ describe('recipeController', function() {
                 $scope: scope,
                 $routeParams: {id:1},
                 recipeService: service
-            });
+            }); //TODO
         }));
 
         it('should define the variables recipe, tags, steps, ingredients, amount, unit on scope', function() {
@@ -183,7 +183,7 @@ describe('recipeController', function() {
         });
 
         it('should try to get the right recipe', function() {
-            expect(service.getRecipe).toHaveBeenCalledWith(1, jasmine.any(Function), jasmine.any(Function));
+            expect(service.getRecipe).toHaveBeenCalledWith(1);
         });
 
         it('should set the current recipe', function() {
@@ -195,7 +195,7 @@ describe('recipeController', function() {
         });
 
         it('should try to get the steps for the right recipe', function() {
-            expect(service.getSteps).toHaveBeenCalledWith(1, jasmine.any(Function), jasmine.any(Function));
+            expect(service.getSteps).toHaveBeenCalledWith(1);
         });
 
         it('should get the steps for the recipe', function() {
