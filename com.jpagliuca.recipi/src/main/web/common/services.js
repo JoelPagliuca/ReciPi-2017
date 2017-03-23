@@ -14,15 +14,15 @@ function recipeService($http, API) {
     var self = this;
 
     self.getSteps = function(recipe_id) {
-        return $http.get('/data/steps.json');
+        return $http.get('/data/steps.json'); // TODO
     }
 
     self.getRecipes = function() {
-        return $http.get('/data/recipes.json');
+        return $http.get('/data/recipes.json'); // TODO
     }
 
     self.getRecipe = function(id) {
-        return $http.get('/data/recipes.json');
+        return $http.get('/data/recipes.json'); // TODO
     }
 
     self.getIngredients = function() {
