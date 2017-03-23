@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('directives')
+angular.module('recipi')
 
     .directive('ingredientList', ingredientList);
 
