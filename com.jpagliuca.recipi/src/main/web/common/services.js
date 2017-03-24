@@ -14,23 +14,23 @@ function recipeService($http, API) {
     var self = this;
 
     self.getSteps = function(recipe_id) {
-        return $http.get('/data/steps.json'); // TODO
+        return $http.get(API+'/steps/'+recipe_id+'/');
     }
 
     self.getRecipes = function() {
-        return $http.get('/data/recipes.json'); // TODO
+        return $http.get(API+'/recipes/');
     }
 
     self.getRecipe = function(id) {
-        return $http.get('/data/recipes.json'); // TODO
+        return $http.get(API+'/recipes/'+id+'/');
     }
 
     self.getIngredients = function() {
-        return $http.get(API+'/ingredients');
+        return $http.get(API+'/ingredients/');
     }
 
     self.getIngredient = function(id) {
-        return $http.get(API+'/ingredients');
+        return $http.get(API+'/ingredients/'+id+'/');
     }
 
     self.getTags = function() {
@@ -38,6 +38,6 @@ function recipeService($http, API) {
     }
 
     self.getTag = function(id) {
-        return $http.get(API+'/tags');
+        return $http.get(API+'/tags/'+id+'/');
     }
 }
