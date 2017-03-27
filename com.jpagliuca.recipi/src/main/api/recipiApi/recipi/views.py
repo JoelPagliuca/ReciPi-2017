@@ -30,6 +30,10 @@ class RecipeViewSet(viewsets.ModelViewSet):
     queryset = Recipe.objects.all()
     serializer_class = RecipeSerializer
 
+    """
+    tag url for Recipe
+    adds a tag to the Recipe
+    """
     @detail_route(methods=['post'])
     def tag(self, request, pk):
         if request.data and request.data.has_key(TAG_ID):

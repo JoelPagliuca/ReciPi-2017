@@ -15,7 +15,7 @@ class TagSerializer(serializers.ModelSerializer):
         fields = ('id', 'name',)
 
 class StepSerializer(serializers.ModelSerializer):
-    ingredient = IngredientSerializer()
+    ingredient = IngredientSerializer(source='ingredient_pk', read_only=True)
 
     class Meta:
         model = Step
@@ -23,10 +23,14 @@ class StepSerializer(serializers.ModelSerializer):
             'number',
             'recipe',
             'ingredient',
+            'ingredient_pk',
             'unit',
             'amount',
             'description',
         )
+        extra_kwargs = {
+            'ingredient_pk': {'write_only': True}
+        }
 
 class RecipeSerializer(serializers.ModelSerializer):
     tags = TagSerializer(many=True, read_only=True)
