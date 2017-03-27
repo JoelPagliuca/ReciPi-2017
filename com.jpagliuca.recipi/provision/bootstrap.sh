@@ -27,7 +27,7 @@ bower install
 pip install -r requirements.txt
 
 # migrations
-python src/main/api/manage.py migrate
+python src/main/api/manage.py migrate --noinput
 
 # set up the services
 # nginx
