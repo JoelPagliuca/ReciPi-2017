@@ -61,7 +61,7 @@ function recipeService($http, API) {
     }
 
     self.getTags = function() {
-        return $http.get(API+'/tags');
+        return $http.get(API+'/tags/');
     }
 
     self.getTag = function(id) {
