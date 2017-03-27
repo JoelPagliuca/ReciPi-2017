@@ -52,6 +52,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
 class StepViewSet(viewsets.ModelViewSet):
     queryset = Step.objects.all()
     serializer_class = StepSerializer
+    # TODO proper delet
 
 
 @api_view()
