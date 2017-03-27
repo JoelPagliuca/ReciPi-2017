@@ -41,7 +41,7 @@ class Recipe(models.Model):
 class Step(models.Model):
     number = models.IntegerField()
     recipe = models.ForeignKey(Recipe, related_name="steps")
-    ingredient = models.ForeignKey(Ingredient)
+    ingredient_pk = models.ForeignKey(Ingredient)
     unit = models.CharField(max_length=16)
     amount = models.IntegerField()
     description = models.CharField(max_length=256, default="")
