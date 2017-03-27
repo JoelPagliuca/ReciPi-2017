@@ -18,7 +18,6 @@ class Tag(models.Model):
 
 class Recipe(models.Model):
     DIFFICULTY_CHOICES = (
-        ('F', 'Foetus'),
         ('E', 'Breezy'),
         ('M', 'Tricky'),
         ('H', 'Expert'),
