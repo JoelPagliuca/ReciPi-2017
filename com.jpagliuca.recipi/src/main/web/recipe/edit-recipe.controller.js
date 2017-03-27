@@ -54,11 +54,13 @@ function editRecipeController ($scope, $routeParams, recipeService) {
     $scope.tag = {};
 
     /**
-     * TODO input validation
+     * input validation
      */
     $scope.addTag = function() {
-        $scope.tags.push($scope.tag);
-        $scope.tag = {};
+        recipeService.tagRecipe($scope.recipe_id, $scope.tag.id).success(function(data) {
+            $scope.tags.push($scope.tag);
+            $scope.tag = {};
+        });
     };
 
     /**
@@ -71,7 +73,13 @@ function editRecipeController ($scope, $routeParams, recipeService) {
         $scope.step_number += 1;
     };
 
-    // $scope.saveRecipe = function() {
-    //     // TODO save to the DB
-    // };
+    /**
+     * save action for the form
+     */
+    $scope.saveRecipe = function() {
+        recipeService.postRecipe($scope.recipe)
+            .success(function(data) {
+                alert("saved");
+            });
+    };
 }
