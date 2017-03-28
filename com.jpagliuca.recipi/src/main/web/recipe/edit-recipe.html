@@ -1,10 +1,7 @@
 <div>
     <!--live preview-->
     <h2>{{ recipe.name }}</h2>
-    
-
     <hr>
-
     <!--recipe form-->
     <div class="well">
         <h2>Recipe</h2>
@@ -66,24 +63,44 @@
                 </div>
             </fieldset>
         </form>
-    <div>        
-    <h2>Steps</h2>
-    <step-list></step-list>
-
-    <hr>
-
-    <!--step form-->
-    <form name="stepForm">
-        <fieldset class="form-group">
-            <textarea ng-model="step.description" class="form-control" placeholder="step description" title="Description"></textarea>
-            <select ng-model="step.ingredient" class="form-control" ng-options="ingredient.name for ingredient in allIngredients">
-                <option value="">Select an Ingredient</option>
-            </select>
-            <input ng-model="step.unit" type="text" class="form-control" placeholder="unit" />
-            <input ng-model="step.amount" type="number" class="form-control" placeholder="amount" />
-            <input type="submit" class="btn btn-primary pull-right" value="Add step" ng-click="addStep()" title="Step"/>
-        </fieldset>
-    </form>
+    <div>  
+    <div ng-show="recipe_id">
+        <h2>Steps</h2>
+        <step-list></step-list>
+        <hr>
+        <!--step form-->
+        <form class="form-horizontal" name="stepForm">
+            <fieldset class="form-group">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Description</label>
+                    <div class="col-sm-10">
+                        <input ng-model="step.description" type="text" class="form-control" placeholder="what to do for this step" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Ingredient</label>
+                    <div class="col-sm-10">
+                        <select ng-model="step.ingredient" class="form-control" ng-options="ingredient.name for ingredient in allIngredients">
+                            <option value="">Select an Ingredient</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Unit</label>
+                    <div class="col-sm-10">
+                        <input ng-model="step.unit" type="text" class="form-control" placeholder="...of measurement" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Amount</label>
+                    <div class="col-sm-10">
+                        <input ng-model="step.amount" type="number" class="form-control" placeholder="" />
+                    </div>
+                </div>
+                <input type="submit" class="btn btn-primary pull-right" value="Add step" ng-click="addStep()" title="Step"/>
+            </fieldset>
+        </form>
+    </div>
 
     <!--tag form-->
     <!--FIXME-->

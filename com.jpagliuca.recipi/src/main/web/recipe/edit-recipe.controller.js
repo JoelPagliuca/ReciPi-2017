@@ -29,10 +29,12 @@ function editRecipeController ($scope, $routeParams, recipeService) {
     var readRecipe = function(response) {
         $scope.recipe = response;
         $scope.tags = $scope.recipe.tags;
-    };
-    var readSteps = function(response) {
-        $scope.steps = response;
-        $scope.step_number = $scope.steps[$scope.steps.length-1].number + 1;
+        $scope.steps = $scope.recipe.steps;
+        if ($scope.steps.length != 0) {
+            $scope.step_number = $scope.steps[$scope.steps.length-1].number + 1;
+        } else {
+            $scope.step_number = 1;
+        }
     };
 
     recipeService.getTags().success(readTags);
@@ -42,7 +44,6 @@ function editRecipeController ($scope, $routeParams, recipeService) {
     $scope.recipe_id = $routeParams.id;
     if ($scope.recipe_id) {
         recipeService.getRecipe($scope.recipe_id).success(readRecipe);
-        recipeService.getSteps($scope.recipe_id).success(readSteps);
     } else {
         $scope.recipe =  { tags: $scope.tags };
         $scope.recipe.name = "";
@@ -53,9 +54,6 @@ function editRecipeController ($scope, $routeParams, recipeService) {
     $scope.step = {};
     $scope.tag = {};
 
-    /**
-     * input validation
-     */
     $scope.addTag = function() {
         recipeService.tagRecipe($scope.recipe_id, $scope.tag.id).success(function(data) {
             $scope.tags.push($scope.tag);
@@ -63,23 +61,23 @@ function editRecipeController ($scope, $routeParams, recipeService) {
         });
     };
 
-    /**
-     * TODO input validation
-     */
     $scope.addStep = function() {
         $scope.step.number = $scope.step_number;
-        $scope.steps.push($scope.step);
-        $scope.step = {};
-        $scope.step_number += 1;
+        recipeService.postStep($scope.recipe_id, $scope.step).success(function(data){
+            $scope.steps.push($scope.step);
+            $scope.step = {};
+            $scope.step_number += 1;
+        });
     };
 
     /**
-     * save action for the form
+     * save action for the form, change to "edit recipe" mode
      */
     $scope.saveRecipe = function() {
         recipeService.postRecipe($scope.recipe)
             .success(function(data) {
-                alert("saved");
+                $scope.recipe_id = data.id;
+                alert("saved recipe");
             });
     };
 }

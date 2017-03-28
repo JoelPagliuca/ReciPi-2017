@@ -21,6 +21,13 @@ function recipeService($http, API) {
         return $http.get(API+'/steps/'+recipe_id+'/');
     }
 
+    self.postStep = function(recipe_id, step) {
+        step.ingredient_pk = step.ingredient.id;
+        step.recipe = recipe_id;
+        delete step.ingredient;
+        return $http.post(API+'/steps/', step)
+    }
+
     /**
      * get all the recipes
      * TODO make a /count endpoint
