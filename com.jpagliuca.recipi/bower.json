@@ -15,6 +15,8 @@
     "angular": "1.5.5",
     "angular-route": "1.5.5",
     "angular-mocks": "1.5.5",
-    "bootstrap": "^3.3.7"
+    "bootstrap": "^3.3.7",
+    "ng-notifications-bar": "^0.0.16",
+    "font-awesome": "fontawesome#^4.7.0"
   }
 }

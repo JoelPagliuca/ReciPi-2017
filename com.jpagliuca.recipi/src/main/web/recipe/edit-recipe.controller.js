@@ -4,15 +4,16 @@ angular.module('recipi')
 
     .controller('editRecipeController', editRecipeController);
 
-editRecipeController.$inject = ['$scope', '$routeParams', 'recipeService'];
+editRecipeController.$inject = ['$scope', '$routeParams', 'recipeService', 'notifications'];
 
 /**
  * at the moment, makes a new recipe
  * @param $scope
  * @param $routeParams
  * @param recipeService
+ * @param notifications
  */
-function editRecipeController ($scope, $routeParams, recipeService) {
+function editRecipeController ($scope, $routeParams, recipeService, notifications) {
     $scope.allTags = [];
     $scope.allIngredients = [];
 
@@ -77,7 +78,7 @@ function editRecipeController ($scope, $routeParams, recipeService) {
         recipeService.postRecipe($scope.recipe)
             .success(function(data) {
                 $scope.recipe_id = data.id;
-                alert("saved recipe");
+                notifications.showSuccess('Recipe saved');
             });
     };
 }

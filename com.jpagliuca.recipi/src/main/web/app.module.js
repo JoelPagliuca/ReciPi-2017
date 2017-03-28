@@ -2,5 +2,6 @@
 
 var app = angular.module('recipi', [
 // dependencies
-    'ngRoute'
+    'ngRoute',
+    'ngNotificationsBar'
 ]);
