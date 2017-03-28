@@ -50,6 +50,10 @@ function recipeService($http, API) {
         return $http.post(API+'/recipes/', recipe);
     }
 
+    self.deleteRecipe = function(id) {
+        return $http.delete(API+'/recipes/'+id+'/');
+    }
+
     /**
      * add a tag to a recipe
      */

@@ -4,14 +4,14 @@ angular.module('recipi')
 
     .controller('recipeListController', recipeListController);
 
-recipeListController.$inject = ['$scope', 'recipeService'];
+recipeListController.$inject = ['$scope', 'recipeService', 'notifications'];
 
 /**
  * just gets the list of recipes and counts them
  * @param $scope
  * @param recipeService
  */
-function recipeListController ($scope, recipeService) {
+function recipeListController ($scope, recipeService, notifications) {
     // values
     $scope.recipes = [];
     $scope.recipesCount = 0;
@@ -21,7 +21,6 @@ function recipeListController ($scope, recipeService) {
         $scope.recipes = response;
         $scope.recipesCount = response.length;
     };
-    var error = function(){};
 
     recipeService.getRecipes().success(saveRecipes);
 
@@ -31,4 +30,18 @@ function recipeListController ($scope, recipeService) {
 
     // searching
     $scope.searchName = '';
+
+    $scope.delete = function(id) {
+        var val = confirm("are you sure you want to delete this recipe?");
+        if (val == true) {
+            recipeService.deleteRecipe(id).success(function(data) {
+                notifications.showError('Recipe deleted');
+                for (var i = 0; i < $scope.recipes.length; i++) {
+                    if ($scope.recipes[i].id == id) {
+                        $scope.recipes.splice(i, 1);
+                    }
+                }
+            });
+        }
+    }
 }
