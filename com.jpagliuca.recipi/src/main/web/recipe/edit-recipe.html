@@ -101,12 +101,20 @@
             </fieldset>
         </form>
     </div>
-
-    <!--tag form-->
-    <!--FIXME-->
-    <!--<tag-list></tag-list>-->
-    <!--<select ng-model="tag" class="form-control" ng-options="tag.name for tag in allTags">
-        <option value="">Select a Tag</option>
-    </select>
-    <input type="submit" class="btn btn-primary pull-right" value="Add tag" ng-click="addTag()" title="Tag"/>-->
+    <div ng-show="recipe_id">
+        <h2>Tags</h2>
+        <div>
+            <tag-list></tag-list>
+        </div>
+        <form class="form-horizontal" name="tagForm">
+            <div class="form-group">
+                <select ng-model="tag" class="form-control" ng-options="tag.name for tag in allTags">
+                    <option value="">Select a Tag</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary pull-right" value="Add tag" ng-click="addTag()" title="Tag"/>
+            </div>
+        </form>
+    </div>
 </div>
