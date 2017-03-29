@@ -26,7 +26,7 @@ function recipeController ($scope, $routeParams, recipeService) {
     var saveRecipe = function(response) {
         $scope.recipe = response;
         $scope.tags = $scope.recipe.tags;
-        $scope.steps = response.recipe.steps;
+        $scope.steps = $scope.recipe.steps;
         var ingredientData = getIngredientList($scope.steps);
         // ingredients calculation
         $scope.ingredients = ingredientData.ingredients;

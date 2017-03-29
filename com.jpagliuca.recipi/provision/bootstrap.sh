@@ -43,3 +43,5 @@ cp -f provision/recipi-node.conf /etc/init/
 service recipi-api start
 service recipi-node start
 service nginx restart
+
+echo "cd /vagrant" >> ~/.bashrc

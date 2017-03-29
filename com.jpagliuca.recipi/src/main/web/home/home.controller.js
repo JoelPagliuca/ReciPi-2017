@@ -17,10 +17,8 @@ function homeController ($scope, recipeService) {
         return Math.floor(Math.random()*max);
     };
 
-    var getRecipesCount = function(response) {
-        $scope.recipesCount = response.length;
+    recipeService.getRecipes().success(function(data) {
+        $scope.recipesCount = data.length;
         $scope.recipe_id = getRandomRecipe($scope.recipesCount);
-    }
-
-    recipeService.getRecipes().success(getRecipesCount); //TODO endpoint for count
+    }); //TODO endpoint for count
 }
