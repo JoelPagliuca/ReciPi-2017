@@ -81,4 +81,11 @@ function editRecipeController ($scope, $routeParams, recipeService, notification
                 notifications.showSuccess('Recipe saved');
             });
     };
+
+    $scope.updateRecipe = function() {
+        recipeService.putRecipe($scope.recipe_id, $scope.recipe)
+            .success(function(data) {
+                notifications.showSuccess('Recipe updated');
+            });
+    }
 }

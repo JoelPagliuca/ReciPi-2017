@@ -59,7 +59,8 @@
                     </div>
                 </div>
                 <div class="form-actions">
-                    <button class="btn btn-primary pull-right" ng-click="saveRecipe()" >Save</button>
+                    <button class="btn btn-success pull-right" ng-click="updateRecipe()" ng-show="recipe_id">Update</button>
+                    <button class="btn btn-primary pull-right" ng-click="saveRecipe()" ng-hide="recipe_id">Save</button>
                 </div>
             </fieldset>
         </form>
