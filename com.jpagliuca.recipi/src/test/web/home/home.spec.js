@@ -15,7 +15,7 @@ describe('homeController', function() {
             $scope: scope,
             recipeService: { 
                 getRecipes: function() {
-                    return { then: function(fn) {fn(recipe_data)} }
+                    return { then: function(fn) {fn({data:recipe_data})} }
                 }
             }
         });

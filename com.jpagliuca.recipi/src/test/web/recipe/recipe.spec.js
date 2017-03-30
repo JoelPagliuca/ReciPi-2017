@@ -14,7 +14,23 @@ describe('recipeController', function() {
         "difficulty": "breezy",
         "serves": 1,
         "time": {"prep": 10, "cook": 20, "other": 0},
-        "notes": []
+        "notes": [],
+        "steps": [
+            {
+                "number": 1,
+                "ingredient": { "id": 0, "name": "pumpkin" },
+                "description": "squash up some pumpkin",
+                "unit":"kg",
+                "amount":1
+            },
+            {
+                "number": 2,
+                "ingredient": { "id": 1, "name": "water" },
+                "description": "add water",
+                "unit":"L",
+                "amount":0.5
+            }
+        ]
     },
     {
         "id": 1,
@@ -25,7 +41,30 @@ describe('recipeController', function() {
         "difficulty": "expert",
         "serves": 2,
         "time": {"prep": 15, "cook": 25, "other": 5},
-        "notes": ["Herbs are great", "Notes are great"]
+        "notes": ["Herbs are great", "Notes are great"],
+        "steps": [
+            {
+                "number": 1,
+                "ingredient": { "id": 2, "name": "chicken" },
+                "description": "cook a chicked",
+                "unit":"unit",
+                "amount":1
+            },
+            {
+                "number": 2,
+                "ingredient": { "id": 3, "name": "herb" },
+                "description": "add herbs",
+                "unit":"g",
+                "amount":100
+            },
+            {
+                "number": 3,
+                "ingredient": { "id": 4, "name": "bread" },
+                "description": "serve with bread",
+                "unit":"loaf",
+                "amount":1
+            }
+        ]
     },
     {
         "id": 2,
@@ -36,77 +75,37 @@ describe('recipeController', function() {
         "difficulty": "tricky",
         "serves": 4,
         "time": {"prep": 5, "cook": 10, "other": 0},
-        "notes": ["Will impress anyone"]
+        "notes": ["Will impress anyone"],
+        "steps": [
+            {
+                "number": 1,
+                "ingredient": { "id": 4, "name": "bread" },
+                "description": "get a bread",
+                "unit":"loaf",
+                "amount":1
+            },
+            {
+                "number": 2,
+                "ingredient": { "id": 5, "name": "garlic" },
+                "description": "add garlic",
+                "unit":"clove",
+                "amount":5
+            },
+            {
+                "number": 3,
+                "ingredient": { "id": 4, "name": "bread" },
+                "description": "another one",
+                "unit":"loaf",
+                "amount":1
+            }
+        ]
     }];
-    var step_data = [
-    [
-        {
-            "number": 1,
-            "ingredient": { "id": 0, "name": "pumpkin" },
-            "description": "squash up some pumpkin",
-            "unit":"kg",
-            "amount":1
-        },
-        {
-            "number": 2,
-            "ingredient": { "id": 1, "name": "water" },
-            "description": "add water",
-            "unit":"L",
-            "amount":0.5
-        }
-    ],
-    [
-        {
-            "number": 1,
-            "ingredient": { "id": 2, "name": "chicken" },
-            "description": "cook a chicked",
-            "unit":"unit",
-            "amount":1
-        },
-        {
-            "number": 2,
-            "ingredient": { "id": 3, "name": "herb" },
-            "description": "add herbs",
-            "unit":"g",
-            "amount":100
-        },
-        {
-            "number": 3,
-            "ingredient": { "id": 4, "name": "bread" },
-            "description": "serve with bread",
-            "unit":"loaf",
-            "amount":1
-        }
-    ],
-    [
-        {
-            "number": 1,
-            "ingredient": { "id": 4, "name": "bread" },
-            "description": "get a bread",
-            "unit":"loaf",
-            "amount":1
-        },
-        {
-            "number": 2,
-            "ingredient": { "id": 5, "name": "garlic" },
-            "description": "add garlic",
-            "unit":"clove",
-            "amount":5
-        },
-        {
-            "number": 3,
-            "ingredient": { "id": 4, "name": "bread" },
-            "description": "another one",
-            "unit":"loaf",
-            "amount":1
-        }
-    ]];
 
     beforeEach(function() {
         module('recipi');
         service = {
-            getRecipe: function(i){ return {then : function(fn){fn(recipe_data[i])}} },
-            getSteps: function(i){ return {then : function(fn){fn(step_data[i])}} }
+            getRecipe: function(i){ return {then : function(fn){fn({data:recipe_data[i]})}} },
+            getSteps: function(i){ return {then : function(fn){fn({data:step_data[i]})}} }
         };
     });
 
@@ -194,12 +193,8 @@ describe('recipeController', function() {
             expect(scope.tags).toBe(recipe_data[1].tags);
         });
 
-        it('should try to get the steps for the right recipe', function() {
-            expect(service.getSteps).toHaveBeenCalledWith(1);
-        });
-
         it('should get the steps for the recipe', function() {
-            expect(scope.steps).toBe(step_data[1]);
+            expect(scope.steps).toBe(recipe_data[1].steps);
         });
 
     });
