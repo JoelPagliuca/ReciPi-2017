@@ -11,7 +11,8 @@ describe('editRecipeController', function() {
         { "id": 0, "name": "pumpkin" },
         { "id": 1, "name": "water" }
     ];
-    var recipe_data = [{
+    var recipe_data = [
+    {
         "id": 0,
         "name": "Pumpkin Soup",
         "description": "A soup",
@@ -20,47 +21,35 @@ describe('editRecipeController', function() {
         "difficulty": "breezy",
         "serves": 1,
         "time": {"prep": 10, "cook": 20, "other": 0},
-        "notes": []
+        "notes": [],
+        "steps": [
+            {
+                "number": 1,
+                "ingredient": { "id": 0, "name": "pumpkin" },
+                "description": "squash up some pumpkin",
+                "unit":"kg",
+                "amount":1
+            },
+            {
+                "number": 2,
+                "ingredient": { "id": 1, "name": "water" },
+                "description": "add water",
+                "unit":"L",
+                "amount":0.5
+            }
+        ]
     },
-        {
-            "id": 1,
-            "name": "Herb Chicken",
-            "description": "A gr8 Chikin dish that is interesting",
-            "image": "data/images/herbchicken.jpg",
-            "tags": [{ "id": 0, "name": "dinner" }, { "id": 2, "name": "poultry" }],
-            "difficulty": "expert",
-            "serves": 2,
-            "time": {"prep": 15, "cook": 25, "other": 5},
-            "notes": ["Herbs are great", "Notes are great"]
-        },
-        {
-            "id": 2,
-            "name": "Garlic Bread",
-            "description": "lol garlic bread",
-            "image": "data/images/garlicbread.jpg",
-            "tags": [{ "id": 1, "name": "lunch" }],
-            "difficulty": "tricky",
-            "serves": 4,
-            "time": {"prep": 5, "cook": 10, "other": 0},
-            "notes": ["Will impress anyone"]
-        }];
-    var step_data = [[
-        {
-            "number": 1,
-            "ingredient": { "id": 0, "name": "pumpkin" },
-            "description": "squash up some pumpkin",
-            "unit":"kg",
-            "amount":1
-        },
-        {
-            "number": 2,
-            "ingredient": { "id": 1, "name": "water" },
-            "description": "add water",
-            "unit":"L",
-            "amount":0.5
-        }
-    ],
-        [
+    {
+        "id": 1,
+        "name": "Herb Chicken",
+        "description": "A gr8 Chikin dish that is interesting",
+        "image": "data/images/herbchicken.jpg",
+        "tags": [{ "id": 0, "name": "dinner" }, { "id": 2, "name": "poultry" }],
+        "difficulty": "expert",
+        "serves": 2,
+        "time": {"prep": 15, "cook": 25, "other": 5},
+        "notes": ["Herbs are great", "Notes are great"],
+        "steps": [
             {
                 "number": 1,
                 "ingredient": { "id": 2, "name": "chicken" },
@@ -82,8 +71,19 @@ describe('editRecipeController', function() {
                 "unit":"loaf",
                 "amount":1
             }
-        ],
-        [
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Garlic Bread",
+        "description": "lol garlic bread",
+        "image": "data/images/garlicbread.jpg",
+        "tags": [{ "id": 1, "name": "lunch" }],
+        "difficulty": "tricky",
+        "serves": 4,
+        "time": {"prep": 5, "cook": 10, "other": 0},
+        "notes": ["Will impress anyone"],
+        "steps": [
             {
                 "number": 1,
                 "ingredient": { "id": 4, "name": "bread" },
@@ -105,15 +105,18 @@ describe('editRecipeController', function() {
                 "unit":"loaf",
                 "amount":1
             }
-        ]];
+        ]
+    }];
 
     beforeEach(function() {
         module('recipi');
         service = {
-            getTags: function(){ return {success : function(fn){fn(tag_data)}} },
-            getIngredients: function(){ return {success : function(fn){fn(ingredient_data)}} },
-            getRecipe: function(i){ return {success : function(fn){fn(recipe_data[i])}} },
-            getSteps: function(i){ return {success : function(fn){fn(step_data[i])}} }
+            getTags: function(){ return {then : function(fn){fn({data: tag_data})}} },
+            getIngredients: function(){ return {then : function(fn){fn({data: ingredient_data})}} },
+            getRecipe: function(i){ return {then : function(fn){fn({data:recipe_data[i]})}} },
+            getSteps: function(i){ return {then : function(fn){fn({data:step_data[i]})}} },
+            postStep: function(i, s){ return {then : function(fn){fn({data:s})}} },
+            tagRecipe: function(i, t){ return {then : function(fn){fn({data:recipe_data[i]})}} }
         };
     });
 
@@ -153,9 +156,9 @@ describe('editRecipeController', function() {
         });
 
         it('should add steps correctly', function() {
-            scope.step = step_data[1];
+            scope.step = recipe_data[1].steps[0];
             scope.addStep();
-            expect(scope.steps[0]).toBe(step_data[1]);
+            expect(scope.steps[0]).toBe(recipe_data[1].steps[0]);
             expect(scope.step_number).toBe(2);
         });
     });
@@ -182,13 +185,9 @@ describe('editRecipeController', function() {
             expect(scope.recipe).toBe(recipe_data[1]);
         });
 
-        it('should try to get the steps for the right recipe', function() {
-            expect(service.getSteps).toHaveBeenCalledWith(1);
-        });
-
         it('should get the steps for the recipe', function() {
             expect(scope.steps).toBeDefined();
-            expect(scope.steps).toBe(step_data[1]);
+            expect(scope.steps).toBe(recipe_data[1].steps);
         });
 
         it('should set a new step number correctly', function() {

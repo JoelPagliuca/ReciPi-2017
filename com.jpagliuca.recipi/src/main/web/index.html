@@ -2,12 +2,15 @@
 <head>
     <!--CSS-->
     <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="bower_components/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="bower_components/ng-notifications-bar/dist/ngNotificationsBar.min.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/recipi.css" />
 
     <!--Angular-->
     <script type="text/javascript" src="bower_components/angular/angular.js"></script>
     <script type="text/javascript" src="bower_components/angular-route/angular-route.js"></script>
+    <script type="text/javascript" src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script type="text/javascript" src="bower_components/ng-notifications-bar/dist/ngNotificationsBar.min.js"></script>
 
     <!--Angular scripts-->
     <script type="text/javascript" src="app.module.js"></script>
@@ -28,6 +31,8 @@
 </head>
 <!--Navbar header-->
 <navbar></navbar>
+<!--Notifications-->
+<notifications-bar class="notifications" closeIcon="fa fa-times-circle"></notifications-bar>
 
 
 <!--Main content-->

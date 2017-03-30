@@ -1,35 +1,121 @@
 <div>
     <!--live preview-->
     <h2>{{ recipe.name }}</h2>
-    <tag-list></tag-list>
-
     <hr>
-
     <!--recipe form-->
-    <form name="recipeForm">
-        <fieldset class="form-group">
-            <input ng-model="recipe.name" type="text" class="form-control" placeholder="recipe name" />
-            <select ng-model="tag" class="form-control" ng-options="tag.name for tag in allTags">
-                <option value="">Select a Tag</option>
-            </select>
-            <input type="submit" class="btn btn-primary pull-right" value="Add tag" ng-click="addTag()" title="Tag"/>
-        </fieldset>
-    </form>
-    <h2>Steps</h2>
-    <step-list></step-list>
-
-    <hr>
-
-    <!--step form-->
-    <form name="stepForm">
-        <fieldset class="form-group">
-            <textarea ng-model="step.description" class="form-control" placeholder="step description" title="Description"></textarea>
-            <select ng-model="step.ingredient" class="form-control" ng-options="ingredient.name for ingredient in allIngredients">
-                <option value="">Select an Ingredient</option>
-            </select>
-            <input ng-model="step.unit" type="text" class="form-control" placeholder="unit" />
-            <input ng-model="step.amount" type="number" class="form-control" placeholder="amount" />
-            <input type="submit" class="btn btn-primary pull-right" value="Add step" ng-click="addStep()" title="Step"/>
-        </fieldset>
-    </form>
+    <div class="well">
+        <h2>Recipe</h2>
+        <form class="form-horizontal" name="recipeForm">
+            <fieldset class="form-group">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Name</label>
+                    <div class="col-sm-10">
+                        <input ng-model="recipe.name" type="text" class="form-control" placeholder="recipe name" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Description</label>
+                    <div class="col-sm-10">
+                        <input ng-model="recipe.description" type="text" class="form-control" placeholder="description" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Image</label>
+                    <div class="col-sm-10">
+                        <input ng-model="recipe.image" type="text" class="form-control" placeholder="image" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Difficulty</label>
+                    <div class="col-sm-10">
+                        <select ng-model="recipe.difficulty" class="form-control" name="difficulty">
+                            <option value="E">Breezy</option>
+                            <option value="M">Tricky</option>
+                            <option value="H">Expert</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Serves</label>
+                    <div class="col-sm-10">
+                        <input ng-model="recipe.serves" type="number" class="form-control" placeholder="how many people?" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Time (min)</label>
+                    <div class="col-sm-10">
+                        <div class="col-sm-4">
+                            <label class="control-label">Preparation</label>
+                            <input ng-model="recipe.time_prep" type="number" class="form-control" />
+                        </div>
+                        <div class="col-sm-4">
+                            <label class="control-label">Cooking</label>
+                            <input ng-model="recipe.time_cook" type="number" class="form-control" />
+                        </div>
+                        <div class="col-sm-4">
+                            <label class="control-label">Other</label>
+                            <input ng-model="recipe.time_other" type="number" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button class="btn btn-success pull-right" ng-click="updateRecipe()" ng-show="recipe_id">Update</button>
+                    <button class="btn btn-primary pull-right" ng-click="saveRecipe()" ng-hide="recipe_id">Save</button>
+                </div>
+            </fieldset>
+        </form>
+    <div>  
+    <div ng-show="recipe_id">
+        <h2>Steps</h2>
+        <step-list></step-list>
+        <hr>
+        <!--step form-->
+        <form class="form-horizontal" name="stepForm">
+            <fieldset class="form-group">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Description</label>
+                    <div class="col-sm-10">
+                        <input ng-model="step.description" type="text" class="form-control" placeholder="what to do for this step" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Ingredient</label>
+                    <div class="col-sm-10">
+                        <select ng-model="step.ingredient" class="form-control" ng-options="ingredient.name for ingredient in allIngredients">
+                            <option value="">Select an Ingredient</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Unit</label>
+                    <div class="col-sm-10">
+                        <input ng-model="step.unit" type="text" class="form-control" placeholder="...of measurement" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Amount</label>
+                    <div class="col-sm-10">
+                        <input ng-model="step.amount" type="number" class="form-control" placeholder="" />
+                    </div>
+                </div>
+                <input type="submit" class="btn btn-primary pull-right" value="Add step" ng-click="addStep()" title="Step"/>
+            </fieldset>
+        </form>
+    </div>
+    <div ng-show="recipe_id">
+        <h2>Tags</h2>
+        <div>
+            <tag-list></tag-list>
+        </div>
+        <form class="form-horizontal" name="tagForm">
+            <div class="form-group">
+                <select ng-model="tag" class="form-control" ng-options="tag.name for tag in allTags">
+                    <option value="">Select a Tag</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary pull-right" value="Add tag" ng-click="addTag()" title="Tag"/>
+            </div>
+        </form>
+    </div>
 </div>

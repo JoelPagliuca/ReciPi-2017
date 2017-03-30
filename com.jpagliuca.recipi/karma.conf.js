@@ -23,6 +23,8 @@ module.exports = function(config) {
       'main/web/bower_components/angular/angular.js',
       'main/web/bower_components/angular-mocks/angular-mocks.js',
       'main/web/bower_components/angular-route/angular-route.js',
+      'main/web/bower_components/angular-sanitize/angular-sanitize.js',
+      'main/web/bower_components/ng-notifications-bar/dist/ngNotificationsBar.min.js',
       'main/web/app.module.js',
       'main/web/*.js',
       'main/web/**/*.controller.js',

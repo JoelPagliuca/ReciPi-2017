@@ -5,17 +5,17 @@ describe('homeController', function() {
     var scope, controller, service;
 
     beforeEach(function() {
-        module('recipi');
+        angular.mock.module('recipi');
     });
 
     beforeEach(inject(function ($rootScope, $controller) {
         var recipe_data = [{},{},{},{}];
         scope = $rootScope.$new();
-        $controller('homeController', {
+        controller = $controller('homeController', {
             $scope: scope,
             recipeService: { 
                 getRecipes: function() {
-                    return { success: function(fn) {fn(recipe_data)} }
+                    return { then: function(fn) {fn({data:recipe_data})} }
                 }
             }
         });

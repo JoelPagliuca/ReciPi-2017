@@ -27,7 +27,7 @@ bower install
 pip install -r requirements.txt
 
 # migrations
-python src/main/api/manage.py migrate
+python src/main/api/manage.py migrate --noinput
 
 # set up the services
 # nginx
@@ -43,3 +43,5 @@ cp -f provision/recipi-node.conf /etc/init/
 service recipi-api start
 service recipi-node start
 service nginx restart
+
+echo "cd /vagrant" >> ~/.bashrc

@@ -23,8 +23,10 @@ function recipeController ($scope, $routeParams, recipeService) {
     $scope.amount = {};
     $scope.unit = {};
 
-    var saveSteps = function(response) {
-        $scope.steps = response;
+    var saveRecipe = function(response) {
+        $scope.recipe = response.data;
+        $scope.tags = $scope.recipe.tags;
+        $scope.steps = $scope.recipe.steps;
         var ingredientData = getIngredientList($scope.steps);
         // ingredients calculation
         $scope.ingredients = ingredientData.ingredients;
@@ -32,16 +34,11 @@ function recipeController ($scope, $routeParams, recipeService) {
         $scope.amount = ingredientData.amount;
         $scope.unit = ingredientData.unit;
     };
-    var saveRecipe = function(response) {
-        $scope.recipe = response;
-        $scope.tags = $scope.recipe.tags;
-    };
     // get the recipe id from the GET param
     $scope.recipe_id = $routeParams.id;
 
     // get the data
-    recipeService.getRecipe($scope.recipe_id).success(saveRecipe);
-    recipeService.getSteps($scope.recipe_id).success(saveSteps);
+    recipeService.getRecipe($scope.recipe_id).then(saveRecipe);
 }
 
 /**
