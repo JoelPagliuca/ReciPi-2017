@@ -35,6 +35,10 @@ app.config(function($routeProvider) {
         })
 });
 
+app.config(['$locationProvider', function($locationProvider) {
+    $locationProvider.hashPrefix('');
+}]);
+
 app.config(['notificationsConfigProvider', function (notificationsConfigProvider) {
 	// auto hide
 	notificationsConfigProvider.setAutoHide(true);

@@ -22,13 +22,13 @@ function editRecipeController ($scope, $routeParams, recipeService, notification
     $scope.steps = [];
 
     var readTags = function(response) {
-        $scope.allTags = response;
+        $scope.allTags = response.data;
     };
     var readIngredients = function(response) {
-        $scope.allIngredients = response;
+        $scope.allIngredients = response.data;
     };
     var readRecipe = function(response) {
-        $scope.recipe = response;
+        $scope.recipe = response.data;
         $scope.tags = $scope.recipe.tags;
         $scope.steps = $scope.recipe.steps;
         if ($scope.steps.length != 0) {
@@ -38,13 +38,13 @@ function editRecipeController ($scope, $routeParams, recipeService, notification
         }
     };
 
-    recipeService.getTags().success(readTags);
-    recipeService.getIngredients().success(readIngredients);
+    recipeService.getTags().then(readTags);
+    recipeService.getIngredients().then(readIngredients);
 
     // get the existing recipe if we've asked for one (also steps)
     $scope.recipe_id = $routeParams.id;
     if ($scope.recipe_id) {
-        recipeService.getRecipe($scope.recipe_id).success(readRecipe);
+        recipeService.getRecipe($scope.recipe_id).then(readRecipe);
     } else {
         $scope.recipe =  { tags: $scope.tags };
         $scope.recipe.name = "";
@@ -56,7 +56,7 @@ function editRecipeController ($scope, $routeParams, recipeService, notification
     $scope.tag = {};
 
     $scope.addTag = function() {
-        recipeService.tagRecipe($scope.recipe_id, $scope.tag.id).success(function(data) {
+        recipeService.tagRecipe($scope.recipe_id, $scope.tag.id).then(function(data) {
             $scope.tags.push($scope.tag);
             $scope.tag = {};
         });
@@ -64,7 +64,7 @@ function editRecipeController ($scope, $routeParams, recipeService, notification
 
     $scope.addStep = function() {
         $scope.step.number = $scope.step_number;
-        recipeService.postStep($scope.recipe_id, $scope.step).success(function(data){
+        recipeService.postStep($scope.recipe_id, $scope.step).then(function(data){
             $scope.steps.push($scope.step);
             $scope.step = {};
             $scope.step_number += 1;
@@ -76,7 +76,7 @@ function editRecipeController ($scope, $routeParams, recipeService, notification
      */
     $scope.saveRecipe = function() {
         recipeService.postRecipe($scope.recipe)
-            .success(function(data) {
+            .then(function(data) {
                 $scope.recipe_id = data.id;
                 notifications.showSuccess('Recipe saved');
             });
@@ -84,7 +84,7 @@ function editRecipeController ($scope, $routeParams, recipeService, notification
 
     $scope.updateRecipe = function() {
         recipeService.putRecipe($scope.recipe_id, $scope.recipe)
-            .success(function(data) {
+            .then(function(data) {
                 notifications.showSuccess('Recipe updated');
             });
     }

@@ -24,7 +24,7 @@ function recipeController ($scope, $routeParams, recipeService) {
     $scope.unit = {};
 
     var saveRecipe = function(response) {
-        $scope.recipe = response;
+        $scope.recipe = response.data;
         $scope.tags = $scope.recipe.tags;
         $scope.steps = $scope.recipe.steps;
         var ingredientData = getIngredientList($scope.steps);
@@ -38,7 +38,7 @@ function recipeController ($scope, $routeParams, recipeService) {
     $scope.recipe_id = $routeParams.id;
 
     // get the data
-    recipeService.getRecipe($scope.recipe_id).success(saveRecipe);
+    recipeService.getRecipe($scope.recipe_id).then(saveRecipe);
 }
 
 /**

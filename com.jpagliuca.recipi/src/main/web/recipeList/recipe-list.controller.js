@@ -18,11 +18,11 @@ function recipeListController ($scope, recipeService, notifications) {
 
     // functions for the services
     var saveRecipes = function(response) {
-        $scope.recipes = response;
+        $scope.recipes = response.data;
         $scope.recipesCount = response.length;
     };
 
-    recipeService.getRecipes().success(saveRecipes);
+    recipeService.getRecipes().then(saveRecipes);
 
     // sorting
     $scope.sortType = '';
@@ -34,7 +34,7 @@ function recipeListController ($scope, recipeService, notifications) {
     $scope.delete = function(id) {
         var val = confirm("are you sure you want to delete this recipe?");
         if (val == true) {
-            recipeService.deleteRecipe(id).success(function(data) {
+            recipeService.deleteRecipe(id).then(function(data) {
                 notifications.showError('Recipe deleted');
                 for (var i = 0; i < $scope.recipes.length; i++) {
                     if ($scope.recipes[i].id == id) {

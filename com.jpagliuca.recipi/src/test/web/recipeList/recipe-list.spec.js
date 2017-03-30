@@ -13,7 +13,7 @@ describe('recipeListController', function() {
         scope = $rootScope.$new();
         controller = $controller('recipeListController', {
             $scope: scope,
-            recipeService: { getRecipes: function(){ return {success : function(fn){fn(recipe_data)}} }}
+            recipeService: { getRecipes: function(){ return {then : function(fn){fn(recipe_data)}} }}
         });
     }));
 
