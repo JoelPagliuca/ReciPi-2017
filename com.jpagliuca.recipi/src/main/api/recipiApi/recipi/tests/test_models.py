@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from models import Recipe, Tag
+from ..models import Recipe, Tag
 
 # Create your tests here.
 class RecipeTestCase(TestCase):
@@ -17,9 +17,6 @@ class RecipeTestCase(TestCase):
             'time_other': 4
         }
         Recipe.objects.create(**self.recipe_data)
-    
-    def test_sanity(self):
-        self.assertTrue(True)
     
     def test_create(self):
         recipe = Recipe.objects.get(name=self.recipe_data['name'])
