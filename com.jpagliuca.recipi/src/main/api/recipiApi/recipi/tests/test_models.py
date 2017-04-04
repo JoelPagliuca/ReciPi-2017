@@ -2,7 +2,6 @@ from django.test import TestCase
 
 from ..models import Recipe, Tag
 
-# Create your tests here.
 class RecipeTestCase(TestCase):
 
     def setUp(self):
