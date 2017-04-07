@@ -23,3 +23,12 @@ class RecipiApiTestCase(APITestCase):
             "time_other": 5,
             "description": "a test recipe"
         }
+        self.ingredient1 = {'name': 'test_ingredient'}
+        self.step1 = {
+            "description": "test_step",
+            "recipe": 1,
+            "number": 1,
+            "amount": 5,
+            "ingredient_pk": 1,
+            "unit": "kg"
+        }
