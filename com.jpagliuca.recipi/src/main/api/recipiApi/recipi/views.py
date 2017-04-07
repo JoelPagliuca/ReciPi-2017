@@ -37,8 +37,12 @@ class RecipeViewSet(viewsets.ModelViewSet):
     @detail_route(methods=['post'])
     def tag(self, request, pk):
         if request.data and request.data.has_key(TAG_ID):
-            recipe = Recipe.objects.get(id=pk)
-            tag = Tag.objects.get(id=request.data[TAG_ID])
+            recipe, tag = None, None
+            try:
+                recipe = Recipe.objects.get(id=pk)
+                tag = Tag.objects.get(id=request.data[TAG_ID])
+            except:
+                pass # one of them weren't found
             if tag and recipe:
                 recipe.add_tag(tag)
                 return response.Response(RecipeSerializer(recipe).data, status=status.HTTP_200_OK)
@@ -54,7 +58,7 @@ class StepViewSet(viewsets.ModelViewSet):
     # TODO proper delet
 
 
-@api_view()
+@api_view()  # pragma: no cover
 @renderer_classes([SwaggerUIRenderer, OpenAPIRenderer])
 def documentation_view(request):
     generator = schemas.SchemaGenerator(title='Recipi API')

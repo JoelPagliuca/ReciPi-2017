@@ -3,7 +3,7 @@ from rest_framework.test import APITestCase
 
 from recipi_api_test import RecipiApiTestCase
 
-from recipiApi.recipi.models import Recipe
+from recipiApi.recipi.models import Recipe, Tag
 
 class RecipeAPITests(RecipiApiTestCase):
 
@@ -41,7 +41,25 @@ class RecipeAPITests(RecipiApiTestCase):
         self.assertEqual(len(Recipe.objects.all()), 0)
     
     def test_add_tag(self):
-        pass # TODO
+        Tag.objects.create(**self.tag1)
+        Recipe.objects.create(**self.recipe1)
+        url = self.URL+'1/tag/'
+        data = {'tag_id': '1'}
+        response = self.client.post(url, data)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(len(response.data['tags']), 1)
+    
+    def test_add_tag_bad(self):
+        Recipe.objects.create(**self.recipe1)
+        url = self.URL+'1/tag/'
+
+        data = {'tag_id': '1'} # non existant tag
+        response = self.client.post(url, data)
+        self.assertFalse(status.is_success(response.status_code))
+
+        data = {'not_tag_id': '1'} # bad request data
+        response = self.client.post(url, data)
+        self.assertFalse(status.is_success(response.status_code))
     
     def test_bad_difficulty(self):
         self.recipe1['difficulty'] = "N"

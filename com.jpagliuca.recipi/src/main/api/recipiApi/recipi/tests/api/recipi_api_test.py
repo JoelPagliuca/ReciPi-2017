@@ -13,6 +13,7 @@ class RecipiApiTestCase(APITestCase):
 
     def setUp(self):
 
+        self.tag1 = {'name': 'test_tag'}
         self.recipe1 = {
             "name": 'test_recipe',
             "image": "string",
