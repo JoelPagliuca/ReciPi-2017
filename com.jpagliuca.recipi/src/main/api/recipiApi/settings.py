@@ -132,7 +132,9 @@ TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 # Tell nose to measure coverage on the 'foo' and 'bar' apps
 NOSE_ARGS = [
     '--with-coverage',
+    # '--cover-branches',
     '--cover-package=recipiApi.recipi.views,recipiApi.recipi.models',
+    '--cover-erase',
 ]
 
 # Django REST settings
