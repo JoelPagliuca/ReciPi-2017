@@ -1,11 +1,13 @@
 from rest_framework import status
 from rest_framework.test import APITestCase
 
+from recipi_api_test import RecipiApiTestCase
+
 from recipiApi.recipi.models import Ingredient
 
-class IngredientAPITests(APITestCase):
+class IngredientAPITests(RecipiApiTestCase):
     
-    URL = '/api/ingredients/'
+    URL = RecipiApiTestCase.URL + 'ingredients/'
 
     def test_create(self):
         data = {'name': 'test_ingredient'}

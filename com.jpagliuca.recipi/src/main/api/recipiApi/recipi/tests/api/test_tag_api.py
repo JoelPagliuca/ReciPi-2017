@@ -1,11 +1,13 @@
 from rest_framework import status
 from rest_framework.test import APITestCase
 
+from recipi_api_test import RecipiApiTestCase
+
 from recipiApi.recipi.models import Tag
 
-class TagAPITests(APITestCase):
+class TagAPITests(RecipiApiTestCase):
     
-    URL = '/api/tags/'
+    URL = RecipiApiTestCase.URL + 'tags/'
 
     def test_create(self):
         data = {'name': 'test_tag'}

@@ -1,23 +1,13 @@
 from rest_framework import status
 from rest_framework.test import APITestCase
 
+from recipi_api_test import RecipiApiTestCase
+
 from recipiApi.recipi.models import Recipe
 
-class RecipeAPITests(APITestCase):
-    
-    URL = '/api/recipes/'
+class RecipeAPITests(RecipiApiTestCase):
 
-    def setUp(self):
-        self.recipe1 = {
-            "name": 'test_recipe',
-            "image": "string",
-            "serves": 56,
-            "difficulty": "E",
-            "time_prep": 30,
-            "time_cook": 25,
-            "time_other": 5,
-            "description": "a test recipe"
-        }
+    URL = RecipiApiTestCase.URL + 'recipes/'
 
     def test_create(self):
         response = self.client.post(self.URL, self.recipe1)
@@ -31,7 +21,8 @@ class RecipeAPITests(APITestCase):
         response = self.client.get(self.URL)
         self.assertTrue(status.is_success(response.status_code))
         self.assertEqual(response.data[0]['name'], self.recipe1['name'])
-        self.assertEqual(response.data[0]['difficulty'], self.recipe1['difficulty'])
+        self.assertEqual(response.data[0]['tags'], [])
+        self.assertEqual(response.data[0]['steps'], [])
     
     def test_update(self):
         Recipe.objects.create(**self.recipe1)
@@ -49,8 +40,12 @@ class RecipeAPITests(APITestCase):
         self.assertTrue(status.is_success(response.status_code)) # 204
         self.assertEqual(len(Recipe.objects.all()), 0)
     
+    def test_add_tag(self):
+        pass # TODO
+    
     def test_bad_difficulty(self):
         self.recipe1['difficulty'] = "N"
         response = self.client.post(self.URL, self.recipe1)
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertEqual(Recipe.objects.count(), 0)
+    
