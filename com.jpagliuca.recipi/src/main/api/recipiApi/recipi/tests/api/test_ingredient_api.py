@@ -1,7 +1,7 @@
 from rest_framework import status
 from rest_framework.test import APITestCase
 
-from ..models import Ingredient
+from recipiApi.recipi.models import Ingredient
 
 class IngredientAPITests(APITestCase):
     
@@ -28,3 +28,10 @@ class IngredientAPITests(APITestCase):
         response = self.client.put(url, data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(Ingredient.objects.get().name, 'test_ingredient')
+    
+    def test_delete(self):
+        Ingredient.objects.create(name="test_ingredient")
+        url = self.URL+'1/'
+        response = self.client.delete(url)
+        self.assertTrue(status.is_success(response.status_code)) # 204
+        self.assertEqual(len(Ingredient.objects.all()), 0)
