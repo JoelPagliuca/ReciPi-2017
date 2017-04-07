@@ -41,8 +41,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
             tag = Tag.objects.get(id=request.data[TAG_ID])
             if tag and recipe:
                 recipe.add_tag(tag)
-                print recipe.tags
-                return response.Response(RecipeSerializer(recipe).data)
+                return response.Response(RecipeSerializer(recipe).data, status=status.HTTP_200_OK)
             else:
                 return response.Response("recipe or tag not found", status=status.HTTP_400_BAD_REQUEST)
         else:
