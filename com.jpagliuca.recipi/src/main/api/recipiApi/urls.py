@@ -28,5 +28,6 @@ router.register(r'steps', views.StepViewSet)
 urlpatterns = [
     url(r'^api/', include(router.urls)),
     url(r'^admin/', admin.site.urls),
+    url(r'^api-token-auth/', 'rest_framework_jwt.views.obtain_jwt_token'),
     url('', views.documentation_view),
 ]
