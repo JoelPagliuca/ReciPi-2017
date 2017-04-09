@@ -46,4 +46,13 @@ app.config(['notificationsConfigProvider', function (notificationsConfigProvider
 	notificationsConfigProvider.setHideDelay(2500);
     // Set an animation for hiding the notification
 	notificationsConfigProvider.setAutoHideAnimation('fadeOutNotifications');
-}])
+}]);
+
+// https://www.octobot.io/blog/2016-11-11-json-web-token-jwt-authentication-in-a-djangoangularjs-web-app/
+app.config(function($httpProvider, jwtInterceptorProvider) {
+    jwtInterceptorProvider.tokenGetter = function(store) {
+        return store.get('token');
+    };
+    // Add a simple interceptor that will fetch all requests and add the jwt token to its authorization header.
+    $httpProvider.interceptors.push('jwtInterceptor');
+});

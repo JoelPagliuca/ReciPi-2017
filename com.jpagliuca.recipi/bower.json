@@ -17,6 +17,8 @@
     "angular-mocks": "1.6.3",
     "bootstrap": "^3.3.7",
     "ng-notifications-bar": "^0.0.16",
-    "font-awesome": "fontawesome#^4.7.0"
+    "font-awesome": "fontawesome#^4.7.0",
+    "angular-jwt": "0.1.9",
+    "a0-angular-storage": "0.0.15"
   }
 }

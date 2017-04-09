@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+
 from rest_framework import routers
+from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token
 
 from recipi import views
 
@@ -28,6 +30,7 @@ router.register(r'steps', views.StepViewSet)
 urlpatterns = [
     url(r'^api/', include(router.urls)),
     url(r'^admin/', admin.site.urls),
-    url(r'^api-token-auth/', 'rest_framework_jwt.views.obtain_jwt_token'),
+    url(r'^api-token-auth/', obtain_jwt_token),
+    url(r'^api-token-refresh/', refresh_jwt_token),
     url('', views.documentation_view),
 ]
