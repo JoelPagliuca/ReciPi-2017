@@ -12,7 +12,7 @@ cd com.jpagliuca.recipi
 vagrant up
 ```
 
-## Quickstart
+## Installation
 ```
 cd com.jpagliuca.recipi
 npm install
@@ -21,9 +21,19 @@ python src/main/api/manage.py migrate
 npm start && ./startapi.sh
 ```
 
+out of date ^ check the provisioning `bootstrap.sh` script
+
 ## Dependencies
 * NodeJS
-* Python
+* Python2
     * Django
     * Django-rest-framework
 * Nginx
+
+### Dev dependencies
+* Vagrant
+
+## Troubleshooting (Development)
+*  `vagrant up` then the api doesn't run
+    * ssh into the container
+    * `sudo service recipi-api start`
