@@ -1,3 +1,4 @@
 {
-    "directory": "src/main/web/bower_components"
+    "directory": "src/main/web/bower_components",
+    "interactive": false
 }

@@ -15,10 +15,14 @@
     "angular": "1.6.3",
     "angular-route": "1.6.3",
     "angular-mocks": "1.6.3",
+    "angular-bootstrap": "2.5.0",
     "bootstrap": "^3.3.7",
     "ng-notifications-bar": "^0.0.16",
     "font-awesome": "fontawesome#^4.7.0",
     "angular-jwt": "0.1.9",
     "a0-angular-storage": "0.0.15"
+  },
+  "resolutions": {
+    "angular": "1.6.3"
   }
 }

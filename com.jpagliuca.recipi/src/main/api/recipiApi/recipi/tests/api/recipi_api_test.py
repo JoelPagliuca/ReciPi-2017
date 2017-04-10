@@ -1,4 +1,6 @@
-from rest_framework.test import APITestCase
+from django.contrib.auth.models import User
+
+from rest_framework.test import APITestCase, APIClient
 
 from recipiApi.recipi.models import Recipe
 
@@ -13,6 +15,7 @@ class RecipiApiTestCase(APITestCase):
 
     def setUp(self):
 
+        self.client = APIClient()
         self.tag1 = {'name': 'test_tag'}
         self.recipe1 = {
             "name": 'test_recipe',
@@ -33,3 +36,7 @@ class RecipiApiTestCase(APITestCase):
             "ingredient_pk": 1,
             "unit": "kg"
         }
+        self.user = User.objects.create(username='Test')
+        self.user.set_password('test1234')
+        self.user.save()
+        login = self.client.login(username='Test', password='test1234')

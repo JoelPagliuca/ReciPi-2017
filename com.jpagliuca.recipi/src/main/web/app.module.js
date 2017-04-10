@@ -5,5 +5,6 @@ var app = angular.module('recipi', [
     'ngRoute',
     'ngNotificationsBar',
     'angular-storage',
-    'angular-jwt'
+    'angular-jwt',
+    'ui.bootstrap'
 ]);
