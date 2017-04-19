@@ -33,7 +33,7 @@ python src/main/api/manage.py migrate --noinput
 # nginx
 cp -f provision/recipi.nginx /etc/nginx/sites-available/site.conf
 chmod 644 /etc/nginx/sites-available/site.conf
-ln -s /etc/nginx/sites-available/site.conf /etc/nginx/sites-enabled/site.conf
+ln -sf /etc/nginx/sites-available/site.conf /etc/nginx/sites-enabled/site.conf
 # python
 cp -f provision/recipi-api.conf /etc/init/
 # node
