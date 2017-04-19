@@ -18,7 +18,4 @@ function loginController ($scope, $location, userService) {
             }
         );
     }
-    $scope.test = function() {
-        console.log('hello');
-    }
 }
