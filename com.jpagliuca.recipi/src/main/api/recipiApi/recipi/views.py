@@ -7,6 +7,7 @@ from rest_framework import viewsets, status
 from rest_framework_swagger.renderers import OpenAPIRenderer, SwaggerUIRenderer
 from rest_framework.decorators import api_view, renderer_classes, detail_route
 from rest_framework import response, schemas
+from rest_framework.permissions import IsAuthenticated
 
 from models import *
 
@@ -17,16 +18,19 @@ __all__ = ["IngredientViewSet", "TagViewSet", "RecipeViewSet", "StepViewSet", "d
 TAG_ID = "tag_id"
 
 class IngredientViewSet(viewsets.ModelViewSet):
+    permission_classes = (IsAuthenticated, )
     queryset = Ingredient.objects.all()
     serializer_class = IngredientSerializer
 
 
 class TagViewSet(viewsets.ModelViewSet):
+    permission_classes = (IsAuthenticated, )
     queryset = Tag.objects.all()
     serializer_class = TagSerializer
 
 
 class RecipeViewSet(viewsets.ModelViewSet):
+    permission_classes = (IsAuthenticated, )
     queryset = Recipe.objects.all()
     serializer_class = RecipeSerializer
 
@@ -53,6 +57,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
 
 
 class StepViewSet(viewsets.ModelViewSet):
+    permission_classes = (IsAuthenticated, )
     queryset = Step.objects.all()
     serializer_class = StepSerializer
     # TODO proper delet

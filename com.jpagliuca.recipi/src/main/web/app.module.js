@@ -3,5 +3,8 @@
 var app = angular.module('recipi', [
 // dependencies
     'ngRoute',
-    'ngNotificationsBar'
+    'ngNotificationsBar',
+    'angular-storage',
+    'angular-jwt',
+    'ui.bootstrap'
 ]);
