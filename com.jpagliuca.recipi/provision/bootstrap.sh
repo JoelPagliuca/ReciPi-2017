@@ -7,6 +7,10 @@ apt-get update
 # install g++ to compile stuff
 apt-get install -y g++
 
+# image libraries for python Pillow
+apt-get install -y zlib1g-dev libpng-dev libjpeg-dev libtiff-dev libfreetype6-dev liblcms liblcms-dev liblcms-utils
+apt-get build-dep -y python-imaging
+
 # install git for bower
 apt-get install -y git
 
@@ -23,7 +27,7 @@ apt-get -y install nginx
 # dependencies
 npm install
 npm install http-server bower -g
-bower install
+bower install --allow-root
 pip install -r requirements.txt
 
 # migrations
@@ -44,4 +48,4 @@ service recipi-api start
 service recipi-node start
 service nginx restart
 
-echo "cd /vagrant" >> ~/.bashrc
+echo "cd /vagrant" >> /home/vagrant/.bashrc
