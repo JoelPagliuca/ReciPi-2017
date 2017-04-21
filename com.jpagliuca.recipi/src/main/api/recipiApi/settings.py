@@ -151,3 +151,17 @@ JWT_AUTH = {
     'JWT_AUTH_HEADER_PREFIX': 'Bearer',
     'JWT_ALLOW_REFRESH': True,
 }
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'JWT': {
+            'type': 'apiKey',
+            'description': 'JWT Auth. Add "Bearer" before the token',
+            'name': 'Authorization',
+            'in': 'header'
+        }
+    },
+    'JSON_EDITOR': True,
+    'APIS_SORTER': 'list',
+    'SHOW-REQUEST_HEADERS': True
+}
