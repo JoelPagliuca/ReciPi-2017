@@ -1,5 +1,7 @@
 from __future__ import unicode_literals
 
+import uuid
+
 from django.db import models
 
 __all__ = ['Ingredient', 'Tag', 'Recipe', 'Step']
@@ -12,9 +14,19 @@ class Ingredient(models.Model):
 
 class Tag(models.Model):
     name = models.CharField(max_length=32)
-
     def __str__(self):
         return self.name
+
+def randomize_filename(instance, filename):
+    """
+    give each image a uuid filename
+    :type filename: str
+    :rtype: str
+    """
+    # get the extension
+    extension = filename.split('.')[-1]
+    new_filename = uuid.uuid4()
+    return "{}.{}".format(new_filename, extension)
 
 class Recipe(models.Model):
     DIFFICULTY_CHOICES = (
@@ -24,7 +36,7 @@ class Recipe(models.Model):
     )
     name = models.CharField(max_length=32)
     description = models.CharField(max_length=256)
-    image = models.CharField(max_length=32)
+    image = models.ImageField(upload_to=randomize_filename)
     difficulty = models.CharField(max_length=8, choices=DIFFICULTY_CHOICES)
     serves = models.IntegerField(default=2)
     time_prep = models.IntegerField(default=0)
