@@ -3,5 +3,7 @@
 /**
  * Globally accessible constants
  */
-angular.module('recipi')
-    .constant("API", "/api");
+var app = angular.module('recipi');
+
+app.constant("API", "/api");
+app.constant("MEDIA_URL", "/media/");

@@ -4,7 +4,7 @@ angular.module('recipi')
 
     .controller('editRecipeController', editRecipeController);
 
-editRecipeController.$inject = ['$scope', '$routeParams', 'recipeService', 'notifications'];
+editRecipeController.$inject = ['$scope', '$routeParams', 'recipeService', 'notifications', 'MEDIA_URL'];
 
 /**
  * at the moment, makes a new recipe
@@ -13,7 +13,7 @@ editRecipeController.$inject = ['$scope', '$routeParams', 'recipeService', 'noti
  * @param recipeService
  * @param notifications
  */
-function editRecipeController ($scope, $routeParams, recipeService, notifications) {
+function editRecipeController ($scope, $routeParams, recipeService, notifications, MEDIA_URL) {
     $scope.allTags = [];
     $scope.allIngredients = [];
 
@@ -29,6 +29,7 @@ function editRecipeController ($scope, $routeParams, recipeService, notification
     };
     var readRecipe = function(response) {
         $scope.recipe = response.data;
+        $scope.recipe.image = MEDIA_URL + $scope.recipe.image; // FIXME copypaste
         $scope.tags = $scope.recipe.tags;
         $scope.steps = $scope.recipe.steps;
         if ($scope.steps.length != 0) {

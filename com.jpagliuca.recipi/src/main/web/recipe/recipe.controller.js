@@ -4,7 +4,7 @@ angular.module('recipi')
 
     .controller('recipeController', recipeController);
 
-recipeController.$inject = ['$scope', '$routeParams', 'recipeService'];
+recipeController.$inject = ['$scope', '$routeParams', 'recipeService', 'MEDIA_URL'];
 
 /**
  * gets the recipe and steps
@@ -13,7 +13,7 @@ recipeController.$inject = ['$scope', '$routeParams', 'recipeService'];
  * @param $routeParams
  * @param recipeService
  */
-function recipeController ($scope, $routeParams, recipeService) {
+function recipeController ($scope, $routeParams, recipeService, MEDIA_URL) {
 
     $scope.recipe = {};
     $scope.tags = [];
@@ -25,6 +25,7 @@ function recipeController ($scope, $routeParams, recipeService) {
 
     var saveRecipe = function(response) {
         $scope.recipe = response.data;
+        $scope.recipe.image = MEDIA_URL + $scope.recipe.image;
         $scope.tags = $scope.recipe.tags;
         $scope.steps = $scope.recipe.steps;
         var ingredientData = getIngredientList($scope.steps);

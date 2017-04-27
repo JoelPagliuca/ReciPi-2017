@@ -35,6 +35,7 @@ class StepSerializer(serializers.ModelSerializer):
 class RecipeSerializer(serializers.ModelSerializer):
     tags = TagSerializer(many=True, read_only=True)
     steps = StepSerializer(many=True, read_only=True)
+    image = serializers.ImageField(use_url=False)
 
     class Meta:
         model = Recipe
