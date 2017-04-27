@@ -48,6 +48,7 @@ coverage/
 
 # Django stuff:
 *.log
+**/uploaded_media/*
 
 # Sphinx documentation
 docs/_build/
