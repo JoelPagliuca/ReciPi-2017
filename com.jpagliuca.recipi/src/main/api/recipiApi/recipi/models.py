@@ -36,7 +36,7 @@ class Recipe(models.Model):
     )
     name = models.CharField(max_length=32)
     description = models.CharField(max_length=256)
-    image = models.ImageField(upload_to=randomize_filename)
+    image = models.ImageField(upload_to=randomize_filename, blank=True, null=True)
     difficulty = models.CharField(max_length=8, choices=DIFFICULTY_CHOICES)
     serves = models.IntegerField(default=2)
     time_prep = models.IntegerField(default=0)

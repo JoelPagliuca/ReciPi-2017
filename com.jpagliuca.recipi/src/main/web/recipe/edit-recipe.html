@@ -22,7 +22,11 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Image</label>
                     <div class="col-sm-10">
-                        <input ng-model="recipe.image" type="text" class="form-control" placeholder="image" />
+                        <input type="file" file-model="recipe.image" name="file"
+                                class="form-control"
+                                accept="image/*" ngf-max-size="10MB">
+                        <br>
+                        <img ng-show="recipe_id" ng-src="{{recipe.image}}" class="img-responsive" style="max-width: 25%">
                     </div>
                 </div>
                 <div class="form-group">

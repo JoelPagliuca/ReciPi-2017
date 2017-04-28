@@ -47,11 +47,23 @@ function recipeService($http, API) {
      * send a new recipe to the API
      */
     self.postRecipe = function(recipe) {
-        return $http.post(API+'/recipes/', recipe);
+        var fd = new FormData();
+        for (var key in recipe)
+            fd.append(key, recipe[key]);
+        return $http.post(API+'/recipes/', fd, {
+            transformRequest: angular.identity,
+            headers: { 'Content-Type': undefined }
+        });
     }
 
     self.putRecipe = function(id, recipe) {
-        return $http.put(API+'/recipes/'+id+'/', recipe);
+        var fd = new FormData();
+        for (var key in recipe)
+            fd.append(key, recipe[key]);
+        return $http.put(API+'/recipes/'+id+'/', fd, {
+            transformRequest: angular.identity,
+            headers: { 'Content-Type': undefined }
+        });
     }
 
     self.deleteRecipe = function(id) {
