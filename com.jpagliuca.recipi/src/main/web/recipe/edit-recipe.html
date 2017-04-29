@@ -5,6 +5,7 @@
     <!--recipe form-->
     <div class="well">
         <h2>Recipe</h2>
+        <hr>
         <form class="form-horizontal" name="recipeForm">
             <fieldset class="form-group">
                 <div class="form-group">
@@ -23,8 +24,7 @@
                     <label class="col-sm-2 control-label">Image</label>
                     <div class="col-sm-10">
                         <input type="file" file-model="recipe.image" name="file"
-                                class="form-control"
-                                accept="image/*" ngf-max-size="10MB">
+                                class="form-control" accept="image/*" ngf-max-size="10MB">
                         <br>
                         <img ng-show="recipe_id" ng-src="{{recipe.image}}" class="img-responsive" style="max-width: 25%">
                     </div>
@@ -108,14 +108,20 @@
     </div>
     <div ng-show="recipe_id">
         <h2>Tags</h2>
+        <hr>
         <div>
             <tag-list></tag-list>
         </div>
+        <br>
         <form class="form-horizontal" name="tagForm">
             <div class="form-group">
-                <select ng-model="tag" class="form-control" ng-options="tag.name for tag in allTags">
-                    <option value="">Select a Tag</option>
-                </select>
+                <label class="col-sm-2 control-label">Tag</label>
+                <div class="col-sm-10">
+                    <select ng-model="tag" class="form-control" ng-options="tag.name for tag in allTags">
+                        <option value="">Select a Tag</option>
+                    </select>
+                </div>
+                
             </div>
             <div class="form-group">
                 <input type="submit" class="btn btn-primary pull-right" value="Add tag" ng-click="addTag()" title="Tag"/>
