@@ -35,7 +35,7 @@ function recipeListController ($scope, recipeService, notifications) {
         var val = confirm("are you sure you want to delete this recipe?");
         if (val == true) {
             recipeService.deleteRecipe(id).then(function(data) {
-                notifications.showError('Recipe deleted');
+                notifications.showSuccess('Recipe deleted');
                 for (var i = 0; i < $scope.recipes.length; i++) {
                     if ($scope.recipes[i].id == id) {
                         $scope.recipes.splice(i, 1);
