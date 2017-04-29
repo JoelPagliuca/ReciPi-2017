@@ -20,4 +20,8 @@ function ingredientService($http, API) {
     self.getIngredient = function(id) {
         return $http.get(API+'/ingredients/'+id+'/');
     }
+
+    self.delete = function(id) {
+        return $http.delete(API+'/ingredients/'+id+'/');
+    }
 }
