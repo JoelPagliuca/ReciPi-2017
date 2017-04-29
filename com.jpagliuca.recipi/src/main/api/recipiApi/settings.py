@@ -126,6 +126,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_ROOT = os.path.join(BASE_DIR, '..', 'uploaded_media')
+MEDIA_URL = '/media/'
 
 # Use nose to run all tests
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
@@ -150,4 +152,18 @@ JWT_AUTH = {
     'JWT_SECRET_KEY': SECRET_KEY,
     'JWT_AUTH_HEADER_PREFIX': 'Bearer',
     'JWT_ALLOW_REFRESH': True,
+}
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'JWT': {
+            'type': 'apiKey',
+            'description': 'JWT Auth. Add "Bearer" before the token',
+            'name': 'Authorization',
+            'in': 'header'
+        }
+    },
+    'JSON_EDITOR': True,
+    'APIS_SORTER': 'list',
+    'SHOW-REQUEST_HEADERS': True
 }
