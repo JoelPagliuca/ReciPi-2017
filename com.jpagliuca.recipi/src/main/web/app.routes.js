@@ -45,6 +45,12 @@ app.config(function($routeProvider) {
             controller: 'ingredientCtrl'
         })
 
+        // tag CRUD view
+        .when('/tags', {
+            templateUrl: 'tag/tag.html',
+            controller: 'tagCtrl'
+        })
+
         .otherwise({
             templateUrl: 'home/home.html',
             controller: homeController
