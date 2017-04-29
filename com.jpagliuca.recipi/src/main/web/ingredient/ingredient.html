@@ -1,3 +1,16 @@
 <h2>Ingredients</h2>
 <hr>
-<p>TODO</p>
+<table class="table table-striped table-bordered" style="width: 75%">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="ing in ingredients | orderBy:sortType:sortReverse">
+        <td><a>{{ing.name}}</a></td>
+        <td><button class="btn btn-danger" ng-click="delete(ing.id)">Delete</button></td>
+    </tr>
+    </tbody>
+</table>
