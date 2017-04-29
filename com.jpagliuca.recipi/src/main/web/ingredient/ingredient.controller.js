@@ -1,8 +1,6 @@
 'use strict';
 
-angular.module('recipi')
-
-    .controller('ingredientCtrl', ingredientCtrl);
+angular.module('recipi').controller('ingredientCtrl', ingredientCtrl);
 
 ingredientCtrl.$inject = ['$scope', 'ingredientService', 'notifications'];
 
@@ -31,5 +29,14 @@ function ingredientCtrl ($scope, ingredientService, notifications) {
                 }
             });
         }
+    };
+
+    $scope.newIngredient = {};
+    $scope.create = function() {
+        ingredientService.create($scope.newIngredient).then(function(response) {
+            $scope.ingredients.push($scope.newIngredient);
+            $scope.newIngredient = {};
+            notifications.showSuccess('Ingredient added');
+        })
     }
 }

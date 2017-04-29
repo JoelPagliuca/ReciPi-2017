@@ -24,4 +24,8 @@ function ingredientService($http, API) {
     self.delete = function(id) {
         return $http.delete(API+'/ingredients/'+id+'/');
     }
+
+    self.create = function(ingredient) {
+        return $http.post(API+'/ingredients/', ingredient);
+    }
 }
