@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  web:
+    build:
+      context: com.jpagliuca.recipi/
+      dockerfile: provision/dockerfile-web
+    container_name: recipi_web
+    command: npm start
+    # command: ls -a
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./com.jpagliuca.recipi/src/main/web:/app
+    # depends_on:
+    #   - api
+  # api:
