@@ -35,7 +35,7 @@ python src/main/api/manage.py migrate --noinput
 
 # set up the services
 # nginx
-cp -f provision/recipi.nginx /etc/nginx/sites-available/site.conf
+cp -f provision/recipi-proxy.conf /etc/nginx/sites-available/site.conf
 chmod 644 /etc/nginx/sites-available/site.conf
 ln -sf /etc/nginx/sites-available/site.conf /etc/nginx/sites-enabled/site.conf
 # python
