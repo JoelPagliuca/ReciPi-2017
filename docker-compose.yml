@@ -7,16 +7,26 @@ services:
       dockerfile: provision/dockerfile-web
     container_name: recipi_web
     command: npm start
-    # command: ls -a
     ports:
       - "8080:8080"
     volumes:
       - ./com.jpagliuca.recipi/src/main/web:/app
     networks: 
       - apps
-    # depends_on:
-    #   - api
-  # api:
+    depends_on:
+      - api
+  api:
+    build:
+      context: com.jpagliuca.recipi/
+      dockerfile: provision/dockerfile-api
+    container_name: recipi_api
+    command: ["python", "manage.py", "runserver", "0.0.0.0:8083"]
+    ports:
+      - "8083:8083"
+    volumes:
+      - ./com.jpagliuca.recipi/src/main/api:/app
+    networks: 
+      - apps
   proxy:
     image: nginx:1.13.1
     container_name: recipi_proxy
