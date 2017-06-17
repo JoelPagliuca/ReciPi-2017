@@ -1,39 +1,23 @@
 # ReciPi
 A Djangular web app for storing all my cooking recipes. 
 It'll end up running on a Raspberry Pi.
+I just have fun building on this project.
 
-I run this off a Vagrant instance at the moment, check the bootstrap script to see how to boot this on a _prod_ server
-
-## Vagrant
-Using vagrant:
-
-```
-cd com.jpagliuca.recipi
-vagrant up
-```
+Running this with Docker, need to work on different setups for _dev_ and _prod_
 
 ## Installation
+
+### Docker
 ```
-cd com.jpagliuca.recipi
-npm install
-pip install -r requirement.txt
-python src/main/api/manage.py migrate
-npm start && ./startapi.sh
+docker-compose up
 ```
 
-out of date ^ check the provisioning `bootstrap.sh` script
+## Development
+Uncomment the volume section of the compose file for live reload, then download the Bower and Node dependencies yourself before booting up Docker.
 
 ## Dependencies
+Actual dependencies for the project
 * NodeJS
+* Bower
 * Python2
-    * Django
-    * Django-rest-framework
 * Nginx
-
-### Dev dependencies
-* Vagrant
-
-## Troubleshooting (Development)
-*  `vagrant up` then the api doesn't run
-    * ssh into the container
-    * `sudo service recipi-api start`

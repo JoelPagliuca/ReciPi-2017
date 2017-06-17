@@ -1,0 +1,6 @@
+FROM python:2.7.13
+COPY src/main/api /app
+WORKDIR /app
+# install requirements for the app
+RUN pip install -r requirements.txt
+RUN python manage.py migrate

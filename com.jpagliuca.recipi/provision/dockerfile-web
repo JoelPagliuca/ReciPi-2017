@@ -1,0 +1,7 @@
+FROM node:6.10
+COPY src/main/web /app
+WORKDIR /app
+# install requirements for the app
+RUN npm install http-server bower -g
+RUN bower install
+EXPOSE 8080

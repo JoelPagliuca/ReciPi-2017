@@ -64,7 +64,7 @@ target/
 # node
 node_modules/
 bower_components/
-*debug.log*
+**/*debug.log*
 
 # database stuff
 *.sqlite3

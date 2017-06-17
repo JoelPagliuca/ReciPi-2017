@@ -18,7 +18,7 @@
   },
   "scripts": {
     "clean": "rm -r coverage node_modules",
-    "start": "http-server src/main/web/ -p 8080",
+    "start": "http-server . -p 8080",
     "test": "karma start --single-run"
   }
 }
